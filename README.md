@@ -1,39 +1,201 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# flag_secure
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+![Pub Version](https://img.shields.io/pub/v/settings_tiles)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+A collection of settings tiles to easily create a settings screen.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Installing
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+See the [installing instructions](https://pub.dev/packages/settings_tiles/install).
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Section
+
+Create a setting section that displays a list of setting tiles, optionally separated by a divider, with a title at the top:
 
 ```dart
-const like = 'sample';
+SettingSection(
+  title: 'A setting section',
+  tiles: [
+    // A list of tiles
+  ],
+)
 ```
 
-## Additional information
+To remove the dividers between the setting tiles, set the `divider` parameter to `null`.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### Tiles
+
+### Text
+
+A simple tile that only displays text and has no interactions:
+
+```dart
+const SettingTextTile(
+  icon: Icons.abc,
+  title: 'Text',
+  description: 'This is a text tile',
+)
+```
+
+### Action
+
+A tile that calls an action when tapped:
+
+```dart
+SettingActionTile(
+  icon: Icons.touch_app,
+  title: 'Action',
+  description: 'This is an action tile',
+  onTap: () {
+    print('The action tile was tapped');
+  },
+),
+```
+
+### Switch
+
+A tile that displays a switch:
+
+```dart
+SettingSwitchTile(
+  icon: Icons.toggle_on,
+  title: 'Switch',
+  description: 'This is a switch tile',
+  toggled: true,
+  onChanged: (value) {
+    // Handle state change
+  },
+)
+```
+
+### Checkbox
+
+A tile that displays a checkbox:
+
+```dart
+SettingCheckboxTile(
+  icon: Icons.check_box,
+  title: 'Checkbox',
+  description: 'This is a checkbox tile',
+  checked: true,
+  onChanged: (value) {
+    if (value == null) {
+      return;
+    }
+
+    // Handle state change
+  },
+)
+```
+
+### Single option
+
+A tile that shows a dialog with a single option to choose:
+
+```dart
+SettingSingleOptionTile(
+  icon: Icons.radio_button_on,
+  title: 'Single option',
+  description: 'This is a single option tile',
+  dialogTitle: 'Options',
+  options: const ['Option 1', 'Option 2', 'Option 3'],
+  initialOption: 'Option 1',
+  onSubmitted: (value) {
+    // Handle state change
+  },
+)
+```
+
+### Multiple options
+
+A tile that shows a dialog with multiple options to choose from:
+
+```dart
+SettingMultipleOptionsTile(
+  icon: Icons.checklist,
+  title: 'Multiple options',
+  description: 'This is a multiple options tile',
+  dialogTitle: 'Options',
+  options: const ['Option 1', 'Option 2', 'Option 3'],
+  initialOptions: const ['Option 1', 'Option 3'],
+  onSubmitted: (value) {
+    // Handle state change
+  },
+)
+```
+
+### Text field
+
+A tile that shows a dialog with a text field:
+
+```dart
+SettingTextFieldTile(
+  icon: Icons.text_fields,
+  title: 'Text field',
+  description: 'This is a text field tile',
+  dialogTitle: 'Text',
+  initialText: 'Some text',
+  onSubmitted: (value) {
+    // Handle state change
+  },
+)
+```
+
+### Slider
+
+A tile that shows a dialog with a slider:
+
+```dart
+SettingSliderTile(
+  icon: Icons.linear_scale,
+  title: 'Slider',
+  description: 'This is a slider tile',
+  dialogTitle: 'Slider',
+  min: 1.0,
+  max: 10.0,
+  divisions: 9,
+  initialValue: 5.0,
+  onSubmitted: (value) {
+    // Handle state change
+  },
+)
+```
+
+### Color picker
+
+A tile that shows a dialog with some color pickers and a preview of the picked color:
+
+```dart
+SettingColorTile(
+  icon: Icons.color_lens,
+  title: 'Color',
+  description: 'This is a color tile',
+  dialogTitle: 'Color',
+  initialColor: Colors.blue,
+  onSubmitted: (value) {
+    // Handle state change
+  },
+)
+```
+
+To change the available color pickers, set the `colorPickers` parameter. To enable all the color pickers, set it to `ColorPickerType.values`.
+
+### About
+
+A tile that shows information about the application and opens Flutter's `AboutDialog` when tapped:
+
+```dart
+const SettingAboutTile(
+  applicationIcon: Image.asset('assets/icon/icon.png'),
+  title: 'Application name',
+  description: 'v1.0.0',
+)
+```
+
+The name of the application needs to passed to the `title` parameter, and the version to the `description` parameter.
+
+## Example
+
+See the [example app](https://pub.dev/packages/settings_tiles/example).

@@ -19,4 +19,4 @@ dependencies:
   gap: ^3.0.1
 
 dev_dependencies:
-  lint: ^2.3.0
+  flutter_lints: ^5.0.0

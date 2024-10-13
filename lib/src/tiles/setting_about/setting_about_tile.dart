@@ -5,7 +5,7 @@ import 'package:settings_tiles/src/tiles/setting_tile.dart';
 /// A setting tile that shows information about the application.
 class SettingAboutTile extends SettingTile {
   /// A setting tile that shows the icon, the name and the version of the application,
-  /// and opens the default Flutter [AboutDialog] when tapped.
+  /// and opens the default Flutter's [AboutDialog] when tapped.
   ///
   /// The name of the application should be passed to the [title] parameter.
   ///
@@ -23,10 +23,10 @@ class SettingAboutTile extends SettingTile {
   /// The icon of the application.
   final Widget applicationIcon;
 
-  /// The application's legalese used in the Flutter [AboutDialog].
+  /// The application's legalese used in the Flutter's [AboutDialog].
   final String? applicationLegalese;
 
-  /// A list of widgets to display in the Flutter [AboutDialog]
+  /// A list of widgets to display in the Flutter's [AboutDialog]
   final List<Widget>? dialogChildren;
 
   void _showAboutDialog(BuildContext context) {

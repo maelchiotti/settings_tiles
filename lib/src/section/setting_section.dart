@@ -3,7 +3,7 @@ import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
 /// A section of the settings.
 class SettingSection extends StatelessWidget {
-  /// A setting section groups a list of settings [tiles], optionally divided by a [divider], with a [title] at the top.
+  /// A setting section groups a list of settings [tiles], optionally separated by a [divider], with a [title] at the top.
   ///
   /// By default, a simple divider is shown between the tiles.
   /// To disable it completely, set the [divider] parameter to `null`.
