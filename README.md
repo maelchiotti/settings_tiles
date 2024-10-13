@@ -1,4 +1,4 @@
-# flag_secure
+# settings_tiles
 
 ![Pub Version](https://img.shields.io/pub/v/settings_tiles)
 
