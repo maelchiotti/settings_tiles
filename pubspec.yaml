@@ -1,0 +1,22 @@
+name: settings_tiles
+description: "A collection of settings tiles to easily create a settings screen"
+
+repository: https://github.com/maelchiotti/settings_tiles
+issue_tracker: https://github.com/maelchiotti/settings_tiles/issues
+
+version: 1.0.0
+
+environment:
+  sdk: ">=3.5.3 <4.0.0"
+  flutter: "3.24.3"
+
+dependencies:
+  flex_color_picker: ^3.6.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  gap: ^3.0.1
+
+dev_dependencies:
+  lint: ^2.3.0

@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
+
+/// A setting tile with a switch.
+class SettingSwitchTile extends SettingTile {
+  /// A setting tile with a checkbox that can be toggled and untoggled.
+  const SettingSwitchTile({
+    super.key,
+    super.visible,
+    super.enabled,
+    super.icon,
+    super.title,
+    super.value,
+    super.description,
+    required this.toggled,
+    required this.onChanged,
+  });
+
+  /// Whether the switch it toggled.
+  final bool toggled;
+
+  /// Called when the status of the switch is changed.
+  ///
+  /// If `null`, the tile will be disabled.
+  final Function(bool)? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!visible) {
+      return const Empty();
+    }
+
+    return InkWell(
+      onTap: enabled && onChanged != null ? () => onChanged!(!toggled) : null,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            leading(context),
+            const Gap(8.0),
+            body(context),
+            const Gap(16.0),
+            Switch(
+              value: toggled,
+              onChanged: enabled ? onChanged : null,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
