@@ -1,4 +1,4 @@
-package com.maelchiotti.example
+package com.maelchiotti.settings_tiles_example
 
 import io.flutter.embedding.android.FlutterActivity
 

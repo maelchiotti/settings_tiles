@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('flag_secure example app'),
+          title: const Text('settings_tiles example app'),
         ),
         body: Builder(
           builder: (context) {
