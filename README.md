@@ -39,6 +39,21 @@ const SettingTextTile(
 )
 ```
 
+### Action
+
+A tile that calls an action when tapped:
+
+```dart
+SettingActionTile(
+  icon: Icons.touch_app,
+  title: 'Action',
+  description: 'This is an action tile',
+  onTap: () {
+    print('The action tile was tapped');
+  },
+),
+```
+
 ### Switch
 
 A tile that displays a switch:
