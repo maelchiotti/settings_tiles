@@ -27,7 +27,7 @@ To remove the dividers between the setting tiles, set the `divider` parameter to
 
 ### Tiles
 
-### Text
+#### Text
 
 A simple tile that only displays text and has no interactions:
 
@@ -39,7 +39,7 @@ const SettingTextTile(
 )
 ```
 
-### Action
+#### Action
 
 A tile that calls an action when tapped:
 
@@ -54,7 +54,7 @@ SettingActionTile(
 ),
 ```
 
-### Switch
+#### Switch
 
 A tile that displays a switch:
 
@@ -70,7 +70,7 @@ SettingSwitchTile(
 )
 ```
 
-### Checkbox
+#### Checkbox
 
 A tile that displays a checkbox:
 
@@ -90,7 +90,7 @@ SettingCheckboxTile(
 )
 ```
 
-### Single option
+#### Single option
 
 A tile that shows a dialog with a single option to choose:
 
@@ -108,7 +108,7 @@ SettingSingleOptionTile(
 )
 ```
 
-### Multiple options
+#### Multiple options
 
 A tile that shows a dialog with multiple options to choose from:
 
@@ -126,7 +126,7 @@ SettingMultipleOptionsTile(
 )
 ```
 
-### Text field
+#### Text field
 
 A tile that shows a dialog with a text field:
 
@@ -143,7 +143,7 @@ SettingTextFieldTile(
 )
 ```
 
-### Slider
+#### Slider
 
 A tile that shows a dialog with a slider:
 
@@ -163,7 +163,7 @@ SettingSliderTile(
 )
 ```
 
-### Color picker
+#### Color picker
 
 A tile that shows a dialog with some color pickers and a preview of the picked color:
 
@@ -182,7 +182,7 @@ SettingColorTile(
 
 To change the available color pickers, set the `colorPickers` parameter. To enable all the color pickers, set it to `ColorPickerType.values`.
 
-### About
+#### About
 
 A tile that shows information about the application and opens Flutter's `AboutDialog` when tapped:
 
