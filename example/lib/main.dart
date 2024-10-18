@@ -30,55 +30,54 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('settings_tiles example app'),
         ),
-        body: Builder(
-          builder: (context) {
-            return SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SettingSection(
-                      title: 'Section',
-                      divider: null,
-                      tiles: [
-                        const SettingTextTile(
-                          icon: Icons.abc,
-                          title: 'Text',
-                          description: 'This is a text tile',
-                        ),
-                        SettingActionTile(
-                          icon: Icons.touch_app,
-                          title: 'Action',
-                          description: 'This is an action tile',
-                          onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('The action tile was tapped!'),
-                                behavior: SnackBarBehavior.floating,
-                              ),
-                            );
-                          },
-                        ),
-                        SettingSwitchTile(
-                          icon: Icons.toggle_on,
-                          title: 'Switch',
-                          description: 'This is a switch tile',
-                          toggled: toggled,
-                          onChanged: (value) {
-                            setState(() {
-                              toggled = value;
-                            });
-                          },
-                        ),
-                        SettingCheckboxTile(
-                          icon: Icons.check_box,
-                          title: 'Title',
-                          description: 'This is a checkbox tile',
-                          checked: checked,
-                          onChanged: (value) {
-                            if (value == null) {
-                              return;
-                            }
+        body: Builder(builder: (context) {
+          return SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SettingSection(
+                    title: 'Section',
+                    divider: null,
+                    tiles: [
+                      const SettingTextTile(
+                        icon: Icons.abc,
+                        title: 'Text',
+                        description: 'This is a text tile',
+                      ),
+                      SettingActionTile(
+                        icon: Icons.touch_app,
+                        title: 'Action',
+                        description: 'This is an action tile',
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('The action tile was tapped!'),
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        },
+                      ),
+                      SettingSwitchTile(
+                        icon: Icons.toggle_on,
+                        title: 'Switch',
+                        description: 'This is a switch tile',
+                        toggled: toggled,
+                        onChanged: (value) {
+                          setState(() {
+                            toggled = value;
+                          });
+                        },
+                      ),
+                      SettingCheckboxTile(
+                        icon: Icons.check_box,
+                        title: 'Title',
+                        description: 'This is a checkbox tile',
+                        checked: checked,
+                        onChanged: (value) {
+                          if (value == null) {
+                            return;
+                          }
 
                             setState(() {
                               checked = value;

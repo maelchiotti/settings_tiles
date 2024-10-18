@@ -11,8 +11,7 @@ class SettingSingleOptionDialog<T> extends StatefulWidget {
   });
 
   final String title;
-
-  final List<T> options;
+  final List<({T value, String title, String? subtitle})> options;
   final T? defaultOption;
 
   @override
@@ -52,13 +51,17 @@ class _SettingSingleOptionDialogState<T> extends State<SettingSingleOptionDialog
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
+            final value = option.value;
+            final title = option.title;
+            final subtitle = option.subtitle;
+
             return RadioListTile<T>(
-              value: option,
+              value: value,
               groupValue: _selectedOption,
-              title: Text(option.toString()),
-              // subtitle: Text(''), // TODO: enable specifying a subtitle
-              selected: _isSelected(option),
-              onChanged: (selected) => _onChanged(option),
+              title: Text(title),
+              subtitle: subtitle != null ? Text(subtitle) : null,
+              selected: _isSelected(value),
+              onChanged: (selected) => _onChanged(value),
             );
           }).toList(),
         ),

@@ -1,6 +1,5 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
@@ -92,9 +91,9 @@ class SettingColorTile extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
-            const Gap(8.0),
+              bodyTrailingPadding,
             ColorPreview(color: initialColor),
           ],
         ),

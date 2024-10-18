@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_slider/setting_slider_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
@@ -91,10 +90,12 @@ class SettingSliderTile extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
-            const Gap(8.0),
-            if (trailing != null) trailing!,
+            if (trailing != null) ...[
+              bodyTrailingPadding,
+              trailing!,
+            ],
           ],
         ),
       ),
