@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/extensions/color_extension.dart';
 import 'package:settings_tiles/src/extensions/text_style_extension.dart';
 
@@ -57,14 +58,17 @@ abstract class SettingTile extends StatelessWidget {
     );
   }
 
+  /// Padding between the [leading] and the [body] widgets.
+  Widget get leadingBodyPadding => const Gap(16.0);
+
   /// Returns the body of the tile.
   ///
   /// Contains the [title], the [value] and the [description].
   Widget body(BuildContext context) {
     final theme = Theme.of(context);
 
-    final titleLarge = theme.textTheme.titleLarge;
-    final titleSmall = theme.textTheme.titleSmall;
+    final titleMedium = theme.textTheme.titleMedium;
+    final titleSmall = theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.secondary);
     final bodyMedium = theme.textTheme.bodyMedium;
 
     return Expanded(
@@ -76,7 +80,7 @@ abstract class SettingTile extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 1.0),
               child: Text(
                 title!,
-                style: enabled ? titleLarge : titleLarge?.subdued,
+                style: enabled ? titleMedium : titleMedium?.subdued,
               ),
             ),
           if (value != null)
@@ -99,4 +103,7 @@ abstract class SettingTile extends StatelessWidget {
       ),
     );
   }
+
+  /// Padding between the [body] and the [trailing] widgets.
+  Widget get bodyTrailingPadding => const Gap(16.0);
 }
