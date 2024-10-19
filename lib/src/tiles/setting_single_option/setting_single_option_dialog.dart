@@ -11,6 +11,7 @@ class SettingSingleOptionDialog<T> extends StatefulWidget {
   });
 
   final String title;
+
   final List<({T value, String title, String? subtitle})> options;
   final T? defaultOption;
 

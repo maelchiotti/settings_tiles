@@ -6,21 +6,25 @@ class SettingSliderDialog extends StatefulWidget {
   const SettingSliderDialog({
     super.key,
     required this.title,
+    required this.label,
     required this.min,
     required this.max,
     required this.divisions,
     required this.defaultValue,
     required this.overrideSlider,
+    required this.onChanged,
   });
 
   final String title;
 
+  final String Function(double)? label;
   final double min;
   final double max;
   final int? divisions;
   final double defaultValue;
 
   final Slider? overrideSlider;
+  final Function(double)? onChanged;
 
   @override
   State<SettingSliderDialog> createState() => _SettingSliderDialogState();
@@ -40,6 +44,10 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
     setState(() {
       _value = value;
     });
+
+    if (widget.onChanged != null) {
+      widget.onChanged!(value);
+    }
   }
 
   @override
@@ -47,7 +55,7 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
     final slider = widget.overrideSlider ??
         Slider(
           value: _value,
-          label: _value.toString(),
+          label: widget.label != null ? widget.label!(_value) : _value.toStringAsFixed(2),
           min: widget.min,
           max: widget.max,
           divisions: widget.divisions,
