@@ -52,9 +52,7 @@ class _SettingSingleOptionDialogState<T> extends State<SettingSingleOptionDialog
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
-            final value = option.value;
-            final title = option.title;
-            final subtitle = option.subtitle;
+            final (:value, :title, :subtitle) = option;
 
             return RadioListTile<T>(
               value: value,

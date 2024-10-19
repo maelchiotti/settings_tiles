@@ -53,9 +53,7 @@ class _SettingMultipleOptionsDialogState<T> extends State<SettingMultipleOptions
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
-            final value = option.value;
-            final title = option.title;
-            final subtitle = option.subtitle;
+            final (:value, :title, :subtitle) = option;
 
             return CheckboxListTile(
               value: _isSelected(value),
