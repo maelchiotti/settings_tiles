@@ -63,6 +63,7 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<List<T>>(
       context: context,
+      useRootNavigator: false,
       builder: (context) {
         return SettingMultipleOptionsDialog(
           title: dialogTitle,

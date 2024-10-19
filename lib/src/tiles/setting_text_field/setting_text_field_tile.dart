@@ -36,6 +36,7 @@ class SettingTextFieldTile extends SettingTile {
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<String>(
       context: context,
+      useRootNavigator: false,
       builder: (context) {
         return SettingTextFieldDialog(
           title: dialogTitle,

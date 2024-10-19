@@ -60,6 +60,7 @@ class SettingSliderTile extends SettingTile {
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<double>(
       context: context,
+      useRootNavigator: false,
       builder: (context) {
         return SettingSliderDialog(
           title: dialogTitle,
