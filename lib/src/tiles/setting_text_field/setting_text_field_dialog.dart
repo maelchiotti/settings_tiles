@@ -29,8 +29,7 @@ class _SettingTextFieldDialogState<T> extends State<SettingTextFieldDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+    return AlertDialog.adaptive(
       title: Text(widget.title),
       content: Padding(
         padding: const EdgeInsets.all(16.0),

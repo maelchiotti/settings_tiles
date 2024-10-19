@@ -50,9 +50,8 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return AlertDialog.adaptive(
       title: Text(widget.title),
-      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
       content: SingleChildScrollView(
         child: Slider(
           value: _value,

@@ -46,7 +46,7 @@ class _SettingMultipleOptionsDialogState<T> extends State<SettingMultipleOptions
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return AlertDialog.adaptive(
       contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
       title: Text(widget.title),
       content: SingleChildScrollView(
