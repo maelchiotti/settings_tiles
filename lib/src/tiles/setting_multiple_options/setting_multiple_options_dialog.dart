@@ -12,7 +12,7 @@ class SettingMultipleOptionsDialog<T> extends StatefulWidget {
 
   final String title;
 
-  final List<T> options;
+  final List<({T value, String title, String? subtitle})> options;
   final List<T>? defaultOptions;
 
   @override
@@ -46,19 +46,20 @@ class _SettingMultipleOptionsDialogState<T> extends State<SettingMultipleOptions
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      clipBehavior: Clip.hardEdge,
+    return AlertDialog.adaptive(
       contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
       title: Text(widget.title),
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
+            final (:value, :title, :subtitle) = option;
+
             return CheckboxListTile(
-              value: _isSelected(option),
-              title: Text(option.toString()),
-              // subtitle: Text(''), // TODO: enable specifying a subtitle
-              selected: _isSelected(option),
-              onChanged: (selected) => _onChanged(option, selected),
+              value: _isSelected(value),
+              title: Text(title),
+              subtitle: subtitle != null ? Text(subtitle) : null,
+              selected: _isSelected(value),
+              onChanged: (selected) => _onChanged(value, selected),
             );
           }).toList(),
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
@@ -7,7 +6,30 @@ import 'package:settings_tiles/src/widgets/empty.dart';
 /// A setting tile with multiple options.
 class SettingMultipleOptionsTile<T> extends SettingTile {
   /// A setting tile with multiple options that can be checked.
-  const SettingMultipleOptionsTile({
+  ///
+  /// The title of the tile in the dialog is the value of the `toString()` method for each option.
+  /// No subtitle is displayed. To specify them, use [SettingMultipleOptionsTile.detailed] instead.
+  SettingMultipleOptionsTile({
+    super.key,
+    super.visible,
+    super.enabled,
+    super.icon,
+    super.title,
+    super.value,
+    super.description,
+    super.trailing,
+    required this.dialogTitle,
+    required List<T> options,
+    this.initialOptions,
+    required this.onSubmitted,
+    this.onCanceled,
+  }) : options = options.map((e) => (value: e, title: e.toString(), subtitle: null)).toList();
+
+  /// A setting tile with multiple options that can be checked.
+
+  /// This constructor allows to specify the title and the description of each option.
+  /// The [options] parameter is a list of [records](https://dart.dev/language/records) that require named parameters.
+  const SettingMultipleOptionsTile.detailed({
     super.key,
     super.visible,
     super.enabled,
@@ -27,7 +49,7 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
   final String dialogTitle;
 
   /// The list of options to choose from.
-  final List<T> options;
+  final List<({T value, String title, String? subtitle})> options;
 
   /// The initial options that are checked.
   final List<T>? initialOptions;
@@ -74,10 +96,12 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
-            const Gap(8.0),
-            if (trailing != null) trailing!,
+            if (trailing != null) ...[
+              bodyTrailingPadding,
+              trailing!,
+            ],
           ],
         ),
       ),

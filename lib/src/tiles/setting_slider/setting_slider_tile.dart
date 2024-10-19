@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_slider/setting_slider_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
@@ -17,17 +16,25 @@ class SettingSliderTile extends SettingTile {
     super.description,
     super.trailing,
     required this.dialogTitle,
+    this.label,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
     required this.initialValue,
-    this.overrideSlider,
+    this.onChanged,
     required this.onSubmitted,
     this.onCanceled,
   });
 
   /// The title of the dialog.
   final String dialogTitle;
+
+  /// The label of the slider.
+  ///
+  /// The [value] is the current value of the slider.
+  ///
+  /// If `null`, the [value] of the slider is displayed directly with a 2 digits precision.
+  final String Function(double value)? label;
 
   /// The minimum value that can be selected in the slider.
   final double min;
@@ -41,10 +48,8 @@ class SettingSliderTile extends SettingTile {
   /// The initial value that the slider is set to.
   final double initialValue;
 
-  /// A custom [Slider] widget to override the default one.
-  ///
-  /// Is set, it will completely replace the default slider created by this package.
-  final Slider? overrideSlider;
+  /// Called when the slider value is changed.
+  final Function(double)? onChanged;
 
   /// Called when the slider value is chosen.
   final Function(double) onSubmitted;
@@ -58,11 +63,12 @@ class SettingSliderTile extends SettingTile {
       builder: (context) {
         return SettingSliderDialog(
           title: dialogTitle,
+          label: label,
           min: min,
           max: max,
           divisions: divisions,
-          defaultValue: initialValue,
-          overrideSlider: overrideSlider,
+          initialValue: initialValue,
+          onChanged: onChanged,
         );
       },
     );
@@ -91,10 +97,12 @@ class SettingSliderTile extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
-            const Gap(8.0),
-            if (trailing != null) trailing!,
+            if (trailing != null) ...[
+              bodyTrailingPadding,
+              trailing!,
+            ],
           ],
         ),
       ),

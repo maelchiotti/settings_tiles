@@ -1,6 +1,5 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
@@ -25,7 +24,6 @@ class SettingColorTile extends SettingTile {
     this.colorPickers = const [ColorPickerType.primary, ColorPickerType.accent],
     this.enableOpacity = true,
     this.initialColor = Colors.white,
-    this.overrideColorPicker,
     required this.onSubmitted,
     this.onCanceled,
   });
@@ -44,12 +42,6 @@ class SettingColorTile extends SettingTile {
   /// The initial color that should be selected in the color pickers and should be previewed at the end of the tile.
   final Color initialColor;
 
-  /// A custom [ColorPicker] widget to override the default one.
-  ///
-  /// Is set, it will completely replace the default color picker created by this package.
-  /// To use it, you need to import the <https://pub.dev/packages/flex_color_picker> package.
-  final ColorPicker? overrideColorPicker;
-
   /// Called when the color is picked.
   final Function(Color) onSubmitted;
 
@@ -61,22 +53,19 @@ class SettingColorTile extends SettingTile {
       for (final colorPickerType in ColorPickerType.values) colorPickerType: colorPickers.contains(colorPickerType),
     };
 
-    final colorPicker = overrideColorPicker ??
-        ColorPicker(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(
-              dialogTitle,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ),
-          pickersEnabled: colorPickersMap,
-          enableOpacity: enableOpacity,
-          color: initialColor,
-          onColorChanged: onSubmitted,
-        );
-
-    await colorPicker.showPickerDialog(context);
+    await ColorPicker(
+      title: Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Text(
+          dialogTitle,
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+      ),
+      pickersEnabled: colorPickersMap,
+      enableOpacity: enableOpacity,
+      color: initialColor,
+      onColorChanged: onSubmitted,
+    ).showPickerDialog(context);
   }
 
   @override
@@ -92,9 +81,9 @@ class SettingColorTile extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
-            const Gap(8.0),
+            bodyTrailingPadding,
             ColorPreview(color: initialColor),
           ],
         ),

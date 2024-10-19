@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
 /// A setting tile that shows information about the application.
@@ -49,7 +48,7 @@ class SettingAboutTile extends SettingTile {
         child: Row(
           children: [
             leading(context),
-            const Gap(8.0),
+            leadingBodyPadding,
             body(context),
           ],
         ),
