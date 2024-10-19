@@ -17,7 +17,6 @@ class SettingTextFieldTile extends SettingTile {
     super.trailing,
     required this.dialogTitle,
     this.initialText,
-    this.overrideTextField,
     required this.onSubmitted,
     this.onCanceled,
   });
@@ -27,13 +26,6 @@ class SettingTextFieldTile extends SettingTile {
 
   /// The initial text displayed in the text field.
   final String? initialText;
-
-  /// A custom [TextField] widget to override the default one.
-  ///
-  /// Is set, it will completely replace the default text field created by this package.
-  ///
-  /// It needs to have a [TextEditingController], otherwise the text entered won't be returned when submitted.
-  final TextField? overrideTextField;
 
   /// Called when the text is submitted.
   final Function(String) onSubmitted;
@@ -48,7 +40,6 @@ class SettingTextFieldTile extends SettingTile {
         return SettingTextFieldDialog(
           title: dialogTitle,
           initialText: initialText,
-          overrideTextField: overrideTextField,
         );
       },
     );

@@ -10,8 +10,7 @@ class SettingSliderDialog extends StatefulWidget {
     required this.min,
     required this.max,
     required this.divisions,
-    required this.defaultValue,
-    required this.overrideSlider,
+    required this.initialValue,
     required this.onChanged,
   });
 
@@ -21,9 +20,8 @@ class SettingSliderDialog extends StatefulWidget {
   final double min;
   final double max;
   final int? divisions;
-  final double defaultValue;
+  final double initialValue;
 
-  final Slider? overrideSlider;
   final Function(double)? onChanged;
 
   @override
@@ -37,7 +35,7 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
   void initState() {
     super.initState();
 
-    _value = widget.defaultValue;
+    _value = widget.initialValue;
   }
 
   void _onChanged(double value) {
@@ -52,22 +50,18 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final slider = widget.overrideSlider ??
-        Slider(
+    return AlertDialog(
+      title: Text(widget.title),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      content: SingleChildScrollView(
+        child: Slider(
           value: _value,
           label: widget.label != null ? widget.label!(_value) : _value.toStringAsFixed(2),
           min: widget.min,
           max: widget.max,
           divisions: widget.divisions,
           onChanged: _onChanged,
-        );
-
-    return AlertDialog(
-      clipBehavior: Clip.hardEdge,
-      contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
-      title: Text(widget.title),
-      content: SingleChildScrollView(
-        child: slider,
+        ),
       ),
       actions: [
         TextButton(

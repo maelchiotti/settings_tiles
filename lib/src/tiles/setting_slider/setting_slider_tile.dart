@@ -21,7 +21,6 @@ class SettingSliderTile extends SettingTile {
     this.max = 1.0,
     this.divisions,
     required this.initialValue,
-    this.overrideSlider,
     this.onChanged,
     required this.onSubmitted,
     this.onCanceled,
@@ -49,11 +48,6 @@ class SettingSliderTile extends SettingTile {
   /// The initial value that the slider is set to.
   final double initialValue;
 
-  /// A custom [Slider] widget to override the default one.
-  ///
-  /// Is set, it will completely replace the default slider created by this package.
-  final Slider? overrideSlider;
-
   /// Called when the slider value is changed.
   final Function(double)? onChanged;
 
@@ -73,8 +67,7 @@ class SettingSliderTile extends SettingTile {
           min: min,
           max: max,
           divisions: divisions,
-          defaultValue: initialValue,
-          overrideSlider: overrideSlider,
+          initialValue: initialValue,
           onChanged: onChanged,
         );
       },

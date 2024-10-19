@@ -7,14 +7,11 @@ class SettingTextFieldDialog extends StatefulWidget {
     super.key,
     required this.title,
     required this.initialText,
-    required this.overrideTextField,
   });
 
   final String title;
 
   final String? initialText;
-
-  final TextField? overrideTextField;
 
   @override
   State<SettingTextFieldDialog> createState() => _SettingTextFieldDialogState();
@@ -27,25 +24,21 @@ class _SettingTextFieldDialogState<T> extends State<SettingTextFieldDialog> {
   void initState() {
     super.initState();
 
-    _textEditingController = widget.overrideTextField?.controller ?? TextEditingController(text: widget.initialText);
+    _textEditingController = TextEditingController(text: widget.initialText);
   }
 
   @override
   Widget build(BuildContext context) {
-    final textField = widget.overrideTextField ??
-        TextField(
-          controller: _textEditingController,
-          autofocus: true,
-        );
-
     return AlertDialog(
-      clipBehavior: Clip.hardEdge,
-      contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
       title: Text(widget.title),
       content: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: textField,
+          child: TextField(
+            controller: _textEditingController,
+            autofocus: true,
+          ),
         ),
       ),
       actions: [
