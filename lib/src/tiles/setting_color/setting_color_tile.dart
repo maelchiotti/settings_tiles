@@ -93,7 +93,7 @@ class SettingColorTile extends SettingTile {
             leading(context),
             leadingBodyPadding,
             body(context),
-              bodyTrailingPadding,
+            bodyTrailingPadding,
             ColorPreview(color: initialColor),
           ],
         ),

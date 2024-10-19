@@ -40,7 +40,7 @@ class SettingSwitchTile extends SettingTile {
             leading(context),
             leadingBodyPadding,
             body(context),
-              bodyTrailingPadding,
+            bodyTrailingPadding,
             Switch(
               value: toggled,
               onChanged: enabled ? onChanged : null,
