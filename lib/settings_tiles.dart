@@ -1,4 +1,6 @@
 export 'package:flex_color_picker/src/models/color_picker_type.dart';
+export 'package:settings_tiles/src/extensions/color_extension.dart';
+export 'package:settings_tiles/src/extensions/text_style_extension.dart';
 export 'package:settings_tiles/src/section/setting_section.dart';
 export 'package:settings_tiles/src/tiles/setting_about/setting_about_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_action/setting_action_tile.dart';
