@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:settings_tiles/settings_tiles.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Display the application behind the system's notifications bar and navigation bar
+  // See https://github.com/flutter/flutter/issues/40974
+  // See https://github.com/flutter/flutter/issues/34678
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+    ),
+  );
+
   runApp(const MyApp());
 }
 
-/// Example app.
 class MyApp extends StatefulWidget {
-  /// Example app.
   const MyApp({super.key});
 
   @override
@@ -28,7 +39,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('settings_tiles example app'),
+          title: const Text('settings_tiles example'),
         ),
         body: Builder(builder: (context) {
           return SingleChildScrollView(
