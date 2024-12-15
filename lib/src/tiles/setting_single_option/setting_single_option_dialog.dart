@@ -16,10 +16,12 @@ class SettingSingleOptionDialog<T> extends StatefulWidget {
   final T? defaultOption;
 
   @override
-  State<SettingSingleOptionDialog<T>> createState() => _SettingSingleOptionDialogState<T>();
+  State<SettingSingleOptionDialog<T>> createState() =>
+      _SettingSingleOptionDialogState<T>();
 }
 
-class _SettingSingleOptionDialogState<T> extends State<SettingSingleOptionDialog<T>> {
+class _SettingSingleOptionDialogState<T>
+    extends State<SettingSingleOptionDialog<T>> {
   late T? _selectedOption;
 
   @override
@@ -68,13 +70,19 @@ class _SettingSingleOptionDialogState<T> extends State<SettingSingleOptionDialog
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.cancelButtonLabel ?? 'Cancel',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.cancelButtonLabel ??
+                'Cancel',
           ),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, _selectedOption),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.okButtonLabel ?? 'OK',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.okButtonLabel ??
+                'OK',
           ),
         ),
       ],

@@ -23,7 +23,7 @@ class SettingCheckboxTile extends SettingTile {
   /// Called when the status of the checkbox is changed.
   ///
   /// If `null`, the tile will be disabled.
-  final Function(bool?)? onChanged;
+  final void Function(bool?)? onChanged;
 
   @override
   Widget build(BuildContext context) {

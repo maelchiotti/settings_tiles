@@ -17,7 +17,7 @@ class SettingTextFieldDialog extends StatefulWidget {
   State<SettingTextFieldDialog> createState() => _SettingTextFieldDialogState();
 }
 
-class _SettingTextFieldDialogState<T> extends State<SettingTextFieldDialog> {
+class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
   late TextEditingController _textEditingController;
 
   @override
@@ -44,13 +44,19 @@ class _SettingTextFieldDialogState<T> extends State<SettingTextFieldDialog> {
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.cancelButtonLabel ?? 'Cancel',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.cancelButtonLabel ??
+                'Cancel',
           ),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, _textEditingController.text),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.okButtonLabel ?? 'OK',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.okButtonLabel ??
+                'OK',
           ),
         ),
       ],

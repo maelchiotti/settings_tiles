@@ -23,7 +23,10 @@ class SettingSingleOptionTile<T> extends SettingTile {
     this.initialOption,
     required this.onSubmitted,
     this.onCanceled,
-  }) : options = options.map((option) => (value: option, title: option.toString(), subtitle: null)).toList();
+  }) : options = options
+            .map((option) =>
+                (value: option, title: option.toString(), subtitle: null))
+            .toList();
 
   /// A setting tile with a single option that can be selected.
   ///
@@ -55,10 +58,10 @@ class SettingSingleOptionTile<T> extends SettingTile {
   final T? initialOption;
 
   /// Called when the option is chosen.
-  final Function(T) onSubmitted;
+  final void Function(T) onSubmitted;
 
   /// Called when the dialog is canceled.
-  final Function()? onCanceled;
+  final VoidCallback? onCanceled;
 
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<T>(

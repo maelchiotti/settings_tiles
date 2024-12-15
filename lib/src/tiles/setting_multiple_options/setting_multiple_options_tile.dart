@@ -23,7 +23,9 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
     this.initialOptions,
     required this.onSubmitted,
     this.onCanceled,
-  }) : options = options.map((e) => (value: e, title: e.toString(), subtitle: null)).toList();
+  }) : options = options
+            .map((e) => (value: e, title: e.toString(), subtitle: null))
+            .toList();
 
   /// A setting tile with multiple options that can be checked.
 
@@ -55,10 +57,10 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
   final List<T>? initialOptions;
 
   /// Called when the options are chosen.
-  final Function(List<T>) onSubmitted;
+  final void Function(List<T>) onSubmitted;
 
   /// Called when the dialog is canceled.
-  final Function()? onCanceled;
+  final VoidCallback? onCanceled;
 
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<List<T>>(

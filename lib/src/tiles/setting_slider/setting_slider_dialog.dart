@@ -22,13 +22,13 @@ class SettingSliderDialog extends StatefulWidget {
   final int? divisions;
   final double initialValue;
 
-  final Function(double)? onChanged;
+  final void Function(double)? onChanged;
 
   @override
   State<SettingSliderDialog> createState() => _SettingSliderDialogState();
 }
 
-class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
+class _SettingSliderDialogState extends State<SettingSliderDialog> {
   late double _value;
 
   @override
@@ -55,7 +55,9 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
       content: SingleChildScrollView(
         child: Slider(
           value: _value,
-          label: widget.label != null ? widget.label!(_value) : _value.toStringAsFixed(2),
+          label: widget.label != null
+              ? widget.label!(_value)
+              : _value.toStringAsFixed(2),
           min: widget.min,
           max: widget.max,
           divisions: widget.divisions,
@@ -66,13 +68,19 @@ class _SettingSliderDialogState<T> extends State<SettingSliderDialog> {
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.cancelButtonLabel ?? 'Cancel',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.cancelButtonLabel ??
+                'Cancel',
           ),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, _value),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.okButtonLabel ?? 'OK',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.okButtonLabel ??
+                'OK',
           ),
         ),
       ],

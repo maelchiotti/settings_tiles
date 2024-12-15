@@ -28,10 +28,10 @@ class SettingTextFieldTile extends SettingTile {
   final String? initialText;
 
   /// Called when the text is submitted.
-  final Function(String) onSubmitted;
+  final void Function(String) onSubmitted;
 
   /// Called when the dialog is canceled.
-  final Function()? onCanceled;
+  final void Function()? onCanceled;
 
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<String>(

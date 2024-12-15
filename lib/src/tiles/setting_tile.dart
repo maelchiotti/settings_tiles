@@ -73,7 +73,8 @@ abstract class SettingTile extends StatelessWidget {
     final theme = Theme.of(context);
 
     final titleMedium = theme.textTheme.titleMedium;
-    final titleSmall = theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.secondary);
+    final titleSmall = theme.textTheme.titleSmall
+        ?.copyWith(color: theme.colorScheme.secondary);
     final bodyMedium = theme.textTheme.bodyMedium;
 
     return Expanded(

@@ -49,13 +49,13 @@ class SettingSliderTile extends SettingTile {
   final double initialValue;
 
   /// Called when the slider value is changed.
-  final Function(double)? onChanged;
+  final void Function(double)? onChanged;
 
   /// Called when the slider value is chosen.
-  final Function(double) onSubmitted;
+  final void Function(double) onSubmitted;
 
   /// Called when the dialog is canceled.
-  final Function()? onCanceled;
+  final VoidCallback? onCanceled;
 
   Future<void> _openDialog(BuildContext context) async {
     final result = await showAdaptiveDialog<double>(

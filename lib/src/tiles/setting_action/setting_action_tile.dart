@@ -18,7 +18,7 @@ class SettingActionTile extends SettingTile {
   });
 
   /// Called when the tile is tapped.
-  final Function() onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

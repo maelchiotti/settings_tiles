@@ -43,14 +43,15 @@ class SettingColorTile extends SettingTile {
   final Color initialColor;
 
   /// Called when the color is picked.
-  final Function(Color) onSubmitted;
+  final void Function(Color) onSubmitted;
 
   /// Called when the dialog is canceled.
-  final Function()? onCanceled;
+  final VoidCallback? onCanceled;
 
   Future<void> _openDialog(BuildContext context) async {
     final colorPickersMap = {
-      for (final colorPickerType in ColorPickerType.values) colorPickerType: colorPickers.contains(colorPickerType),
+      for (final colorPickerType in ColorPickerType.values)
+        colorPickerType: colorPickers.contains(colorPickerType),
     };
 
     await ColorPicker(

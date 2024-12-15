@@ -16,10 +16,12 @@ class SettingMultipleOptionsDialog<T> extends StatefulWidget {
   final List<T>? defaultOptions;
 
   @override
-  State<SettingMultipleOptionsDialog<T>> createState() => _SettingMultipleOptionsDialogState<T>();
+  State<SettingMultipleOptionsDialog<T>> createState() =>
+      _SettingMultipleOptionsDialogState<T>();
 }
 
-class _SettingMultipleOptionsDialogState<T> extends State<SettingMultipleOptionsDialog<T>> {
+class _SettingMultipleOptionsDialogState<T>
+    extends State<SettingMultipleOptionsDialog<T>> {
   late List<T> _selectedOptions;
 
   @override
@@ -68,13 +70,19 @@ class _SettingMultipleOptionsDialogState<T> extends State<SettingMultipleOptions
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.cancelButtonLabel ?? 'Cancel',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.cancelButtonLabel ??
+                'Cancel',
           ),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, _selectedOptions),
           child: Text(
-            Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.okButtonLabel ?? 'OK',
+            Localizations.of<MaterialLocalizations>(
+                        context, MaterialLocalizations)
+                    ?.okButtonLabel ??
+                'OK',
           ),
         ),
       ],
