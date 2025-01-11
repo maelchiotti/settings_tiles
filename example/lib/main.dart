@@ -108,6 +108,35 @@ class _MyAppState extends State<MyApp> {
                           });
                         },
                       ),
+                      SettingMultipleOptionsTile.detailed(
+                        icon: Icons.checklist,
+                        title: 'Multiple options (detailed)',
+                        description: 'This is a detailed multiple options tile',
+                        dialogTitle: 'Options',
+                        options: const [
+                          (
+                            value: 'Option 1',
+                            title: 'Option n°1',
+                            subtitle: 'This is option n°1'
+                          ),
+                          (
+                            value: 'Option 2',
+                            title: 'Option n°2',
+                            subtitle: 'This is option n°2'
+                          ),
+                          (
+                            value: 'Option 3',
+                            title: 'Option n°3',
+                            subtitle: 'This is option n°3'
+                          ),
+                        ],
+                        initialOptions: selectedOptions,
+                        onSubmitted: (value) {
+                          setState(() {
+                            selectedOptions = value;
+                          });
+                        },
+                      ),
                       SettingTextFieldTile(
                         icon: Icons.text_fields,
                         title: 'Text field',

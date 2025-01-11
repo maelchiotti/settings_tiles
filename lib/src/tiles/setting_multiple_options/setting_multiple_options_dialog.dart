@@ -2,25 +2,29 @@
 
 import 'package:flutter/material.dart';
 
-class SettingMultipleOptionsDialog<T> extends StatefulWidget {
+import '../../types/multiple_options_details.dart';
+
+class SettingMultipleOptionsDialog<T extends Object> extends StatefulWidget {
   const SettingMultipleOptionsDialog({
     super.key,
     required this.title,
     required this.options,
-    required this.defaultOptions,
+    required this.initialOptions,
+    required this.minOptions,
   });
 
   final String title;
 
-  final List<({T value, String title, String? subtitle})> options;
-  final List<T>? defaultOptions;
+  final List<MultipleOptionsDetails> options;
+  final List<T> initialOptions;
+  final int minOptions;
 
   @override
   State<SettingMultipleOptionsDialog<T>> createState() =>
       _SettingMultipleOptionsDialogState<T>();
 }
 
-class _SettingMultipleOptionsDialogState<T>
+class _SettingMultipleOptionsDialogState<T extends Object>
     extends State<SettingMultipleOptionsDialog<T>> {
   late List<T> _selectedOptions;
 
@@ -29,7 +33,11 @@ class _SettingMultipleOptionsDialogState<T>
     super.initState();
 
     // Create a new list so it can be modified
-    _selectedOptions = List.from(widget.defaultOptions ?? []);
+    _selectedOptions = List.from(widget.initialOptions);
+  }
+
+  bool get canSubmit {
+    return _selectedOptions.length >= widget.minOptions;
   }
 
   bool _isSelected(T option) {
@@ -54,7 +62,7 @@ class _SettingMultipleOptionsDialogState<T>
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
-            final (:value, :title, :subtitle) = option;
+            final (:value as T, :title, :subtitle) = option;
 
             return CheckboxListTile(
               value: _isSelected(value),
@@ -77,7 +85,8 @@ class _SettingMultipleOptionsDialogState<T>
           ),
         ),
         TextButton(
-          onPressed: () => Navigator.pop(context, _selectedOptions),
+          onPressed:
+              canSubmit ? () => Navigator.pop(context, _selectedOptions) : null,
           child: Text(
             Localizations.of<MaterialLocalizations>(
                         context, MaterialLocalizations)

@@ -3,8 +3,10 @@ import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multip
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
 
+import '../../types/multiple_options_details.dart';
+
 /// A setting tile with multiple options.
-class SettingMultipleOptionsTile<T> extends SettingTile {
+class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
   /// A setting tile with multiple options that can be checked.
   ///
   /// The title of the tile in the dialog is the value of the `toString()` method for each option.
@@ -20,11 +22,13 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
     super.trailing,
     required this.dialogTitle,
     required List<T> options,
-    this.initialOptions,
+    this.initialOptions = const [],
+    this.minOptions = 0,
     required this.onSubmitted,
     this.onCanceled,
   }) : options = options
-            .map((e) => (value: e, title: e.toString(), subtitle: null))
+            .map((option) =>
+                (value: option, title: option.toString(), subtitle: null))
             .toList();
 
   /// A setting tile with multiple options that can be checked.
@@ -42,7 +46,8 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
     super.trailing,
     required this.dialogTitle,
     required this.options,
-    this.initialOptions,
+    this.initialOptions = const [],
+    this.minOptions = 0,
     required this.onSubmitted,
     this.onCanceled,
   });
@@ -51,10 +56,13 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
   final String dialogTitle;
 
   /// The list of options to choose from.
-  final List<({T value, String title, String? subtitle})> options;
+  final List<MultipleOptionsDetails> options;
 
   /// The initial options that are checked.
-  final List<T>? initialOptions;
+  final List<T> initialOptions;
+
+  /// The minimal number of options that need to be selected.
+  final int minOptions;
 
   /// Called when the options are chosen.
   final void Function(List<T>) onSubmitted;
@@ -70,7 +78,8 @@ class SettingMultipleOptionsTile<T> extends SettingTile {
         return SettingMultipleOptionsDialog(
           title: dialogTitle,
           options: options,
-          defaultOptions: initialOptions,
+          initialOptions: initialOptions,
+          minOptions: minOptions,
         );
       },
     );

@@ -7,6 +7,9 @@ format:
 # Publishing
 .PHONY: dry_run publish
 
+pana:
+	pana .
+
 dry_run:
 	dart pub publish --dry-run
 

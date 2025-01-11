@@ -126,6 +126,27 @@ SettingMultipleOptionsTile(
 )
 ```
 
+The `.detailed` named constructor allows you to specify the title and an optional subtitle for each value.
+The list of options must be a list of `MultipleOptionsDetails`, which is a record containing the value, the title and the optional subtitle of the option:
+
+```dart
+SettingMultipleOptionsTile.detailed(
+  icon: Icons.checklist,
+  title: 'Multiple options (detailed)',
+  description: 'This is a detailed multiple options tile',
+  dialogTitle: 'Options',
+  options: const [
+    (value: 'Option 1', title: 'Option n°1', subtitle: 'This is option n°1'),
+    (value: 'Option 2', title: 'Option n°2', subtitle: 'This is option n°2'),
+    (value: 'Option 3', title: 'Option n°3', subtitle: 'This is option n°3'),
+  ],
+  initialOptions: const ['Option 1', 'Option 3'],
+  onSubmitted: (value) {
+    // Handle state change
+  },
+),
+``` 
+
 #### Text field
 
 A tile that shows a dialog with a text field:

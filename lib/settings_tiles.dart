@@ -12,3 +12,4 @@ export 'package:settings_tiles/src/tiles/setting_slider/setting_slider_tile.dart
 export 'package:settings_tiles/src/tiles/setting_switch/setting_switch_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_text/setting_text_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_text_field/setting_text_field_tile.dart';
+export 'package:settings_tiles/src/types/multiple_options_details.dart';
