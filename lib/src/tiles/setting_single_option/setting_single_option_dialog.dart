@@ -2,25 +2,27 @@
 
 import 'package:flutter/material.dart';
 
-class SettingSingleOptionDialog<T> extends StatefulWidget {
+import '../../types/multiple_options_details.dart';
+
+class SettingSingleOptionDialog<T extends Object> extends StatefulWidget {
   const SettingSingleOptionDialog({
     super.key,
     required this.title,
     required this.options,
-    required this.defaultOption,
+    required this.initialOption,
   });
 
   final String title;
 
-  final List<({T value, String title, String? subtitle})> options;
-  final T? defaultOption;
+  final List<MultipleOptionsDetails> options;
+  final T? initialOption;
 
   @override
   State<SettingSingleOptionDialog<T>> createState() =>
       _SettingSingleOptionDialogState<T>();
 }
 
-class _SettingSingleOptionDialogState<T>
+class _SettingSingleOptionDialogState<T extends Object>
     extends State<SettingSingleOptionDialog<T>> {
   late T? _selectedOption;
 
@@ -28,7 +30,7 @@ class _SettingSingleOptionDialogState<T>
   void initState() {
     super.initState();
 
-    _selectedOption = widget.defaultOption;
+    _selectedOption = widget.initialOption;
   }
 
   bool _isSelected(T option) {
@@ -53,7 +55,7 @@ class _SettingSingleOptionDialogState<T>
       content: SingleChildScrollView(
         child: ListBody(
           children: widget.options.map((option) {
-            final (:value, :title, :subtitle) = option;
+            final (:value as T, :title, :subtitle) = option;
 
             return RadioListTile<T>(
               value: value,

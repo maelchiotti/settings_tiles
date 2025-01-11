@@ -3,8 +3,10 @@ import 'package:settings_tiles/src/tiles/setting_single_option/setting_single_op
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/widgets/empty.dart';
 
+import '../../types/multiple_options_details.dart';
+
 /// A setting tile with a single option.
-class SettingSingleOptionTile<T> extends SettingTile {
+class SettingSingleOptionTile<T extends Object> extends SettingTile {
   /// A setting tile with a single option that can be selected.
   ///
   /// The title of the tile in the dialog is the value of the `toString()` method for each option.
@@ -30,8 +32,7 @@ class SettingSingleOptionTile<T> extends SettingTile {
 
   /// A setting tile with a single option that can be selected.
   ///
-  /// This constructor allows to specify the title and the description of each option.
-  /// The [options] parameter is a list of [records](https://dart.dev/language/records) that require named parameters.
+  /// This constructor allows to specify the title and an optional subtitle for each option.
   const SettingSingleOptionTile.detailed({
     super.key,
     super.visible,
@@ -52,7 +53,7 @@ class SettingSingleOptionTile<T> extends SettingTile {
   final String dialogTitle;
 
   /// The list of options.
-  final List<({T value, String title, String? subtitle})> options;
+  final List<MultipleOptionsDetails> options;
 
   /// The initial option that is selected.
   final T? initialOption;
@@ -71,7 +72,7 @@ class SettingSingleOptionTile<T> extends SettingTile {
         return SettingSingleOptionDialog(
           title: dialogTitle,
           options: options,
-          defaultOption: initialOption,
+          initialOption: initialOption,
         );
       },
     );

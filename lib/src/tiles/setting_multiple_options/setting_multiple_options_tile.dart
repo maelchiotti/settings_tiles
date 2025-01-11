@@ -32,9 +32,8 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
             .toList();
 
   /// A setting tile with multiple options that can be checked.
-
-  /// This constructor allows to specify the title and the description of each option.
-  /// The [options] parameter is a list of [records](https://dart.dev/language/records) that require named parameters.
+  ///
+  /// This constructor allows to specify the title and an optional subtitle for each option.
   const SettingMultipleOptionsTile.detailed({
     super.key,
     super.visible,

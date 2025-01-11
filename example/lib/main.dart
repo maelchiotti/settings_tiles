@@ -95,6 +95,35 @@ class _MyAppState extends State<MyApp> {
                           });
                         },
                       ),
+                      SettingSingleOptionTile.detailed(
+                        icon: Icons.radio_button_on,
+                        title: 'Single option (detailed)',
+                        description: 'This is a detailed single option tile',
+                        dialogTitle: 'Options',
+                        options: const [
+                          (
+                            value: 'Option 1',
+                            title: 'Option n°1',
+                            subtitle: 'This is option n°1'
+                          ),
+                          (
+                            value: 'Option 2',
+                            title: 'Option n°2',
+                            subtitle: 'This is option n°2'
+                          ),
+                          (
+                            value: 'Option 3',
+                            title: 'Option n°3',
+                            subtitle: 'This is option n°3'
+                          ),
+                        ],
+                        initialOption: selectedOption,
+                        onSubmitted: (value) {
+                          setState(() {
+                            selectedOption = value;
+                          });
+                        },
+                      ),
                       SettingMultipleOptionsTile(
                         icon: Icons.checklist,
                         title: 'Multiple options',

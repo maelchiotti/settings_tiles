@@ -108,6 +108,27 @@ SettingSingleOptionTile(
 )
 ```
 
+The `.detailed` named constructor allows you to specify the title and an optional subtitle for each option.
+The list of options must be a list of `MultipleOptionsDetails`, which is a record containing the value, the title and the optional subtitle of the option:
+
+```dart
+SettingSingleOptionTile.detailed(
+  icon: Icons.radio_button_on,
+  title: 'Single option (detailed)',
+  description: 'This is a detailed single option tile',
+  dialogTitle: 'Options',
+  options: const [
+    (value: 'Option 1', title: 'Option n°1', subtitle: 'This is option n°1'),
+    (value: 'Option 2', title: 'Option n°2', subtitle: 'This is option n°2'),
+    (value: 'Option 3', title: 'Option n°3', subtitle: 'This is option n°3'),
+  ],
+  initialOption: selectedOption,
+  onSubmitted: (value) {
+    // Handle state change
+  },
+),
+```
+
 #### Multiple options
 
 A tile that shows a dialog with multiple options to choose from:
@@ -126,7 +147,7 @@ SettingMultipleOptionsTile(
 )
 ```
 
-The `.detailed` named constructor allows you to specify the title and an optional subtitle for each value.
+The `.detailed` named constructor allows you to specify the title and an optional subtitle for each option.
 The list of options must be a list of `MultipleOptionsDetails`, which is a record containing the value, the title and the optional subtitle of the option:
 
 ```dart
