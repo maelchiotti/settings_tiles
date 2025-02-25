@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_text_field/setting_text_field_dialog.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
+import 'setting_text_field_dialog.dart';
+import '../setting_tile.dart';
+import '../../widgets/empty.dart';
 
 /// A setting tile with a text field.
 class SettingTextFieldTile extends SettingTile {

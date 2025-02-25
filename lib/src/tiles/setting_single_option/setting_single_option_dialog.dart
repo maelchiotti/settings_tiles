@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../buttons/cancel_button.dart';
+import '../../buttons/ok_button.dart';
 import '../../types/multiple_options_details.dart';
 
 class SettingSingleOptionDialog<T extends Object> extends StatefulWidget {
@@ -69,23 +71,9 @@ class _SettingSingleOptionDialogState<T extends Object>
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.cancelButtonLabel ??
-                'Cancel',
-          ),
-        ),
-        TextButton(
+        CancelButton(),
+        OkButton(
           onPressed: () => Navigator.pop(context, _selectedOption),
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.okButtonLabel ??
-                'OK',
-          ),
         ),
       ],
     );

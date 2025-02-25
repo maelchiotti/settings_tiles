@@ -18,6 +18,8 @@ class _MyAppState extends State<MyApp> {
   String selectedOption = 'Option 1';
   List<String> selectedOptions = ['Option 1', 'Option 3'];
   double sliderValue = 5.0;
+  List<double> customSliderValues = [1, 7, 30];
+  double customSliderValue = 7;
   Color color = Colors.blue;
   String text = 'Some text';
 
@@ -190,6 +192,31 @@ class _MyAppState extends State<MyApp> {
                         onSubmitted: (value) {
                           setState(() {
                             sliderValue = value;
+                          });
+                        },
+                      ),
+                      SettingCustomSliderTile(
+                        icon: Icons.linear_scale,
+                        title: 'Custom slider',
+                        description: 'This is a custom slider tile',
+                        dialogTitle: 'Custom slider',
+                        values: customSliderValues,
+                        initialValue: customSliderValue,
+                        label: (value) {
+                          switch (value) {
+                            case 1:
+                              return 'Day';
+                            case 7:
+                              return 'Week';
+                            case 30:
+                              return 'Month';
+                            default:
+                              return '';
+                          }
+                        },
+                        onSubmitted: (value) {
+                          setState(() {
+                            customSliderValue = value;
                           });
                         },
                       ),

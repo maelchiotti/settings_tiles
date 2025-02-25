@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import '../tiles/setting_tile.dart';
 
 /// A section of the settings.
 class SettingSection extends StatelessWidget {

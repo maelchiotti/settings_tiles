@@ -9,6 +9,7 @@ export 'package:settings_tiles/src/tiles/setting_color/setting_color_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_single_option/setting_single_option_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_slider/setting_slider_tile.dart';
+export 'package:settings_tiles/src/tiles/setting_custom_slider/setting_custom_slider_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_switch/setting_switch_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_text/setting_text_tile.dart';
 export 'package:settings_tiles/src/tiles/setting_text_field/setting_text_field_tile.dart';

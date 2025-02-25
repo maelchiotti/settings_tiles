@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'setting_slider_dialog.dart';
+import 'setting_custom_slider_dialog.dart';
 import '../setting_tile.dart';
 import '../../widgets/empty.dart';
 
-/// A setting tile with a slider.
-class SettingSliderTile extends SettingTile {
-  /// A setting tile with a slider to choose a value between a [min] value, a [max] value with a number of [divisions].
-  const SettingSliderTile({
+/// A setting tile with a custom slider.
+class SettingCustomSliderTile extends SettingTile {
+  /// A setting tile with a slider to choose a value between a set of custom [values].
+  const SettingCustomSliderTile({
     super.key,
     super.visible,
     super.enabled,
@@ -17,9 +17,7 @@ class SettingSliderTile extends SettingTile {
     super.trailing,
     required this.dialogTitle,
     this.label,
-    this.min = 0.0,
-    this.max = 1.0,
-    this.divisions,
+    required this.values,
     required this.initialValue,
     this.onChanged,
     required this.onSubmitted,
@@ -36,14 +34,8 @@ class SettingSliderTile extends SettingTile {
   /// If `null`, the [value] of the slider is displayed directly with a 2 digits precision.
   final String Function(double value)? label;
 
-  /// The minimum value that can be selected in the slider.
-  final double min;
-
-  /// The maximum value that can be selected in the slider.
-  final double max;
-
-  /// The number of divisions of the slider between the [min] and the [max].
-  final int? divisions;
+  /// The list of discrete values allowed in the slider.
+  final List<double> values;
 
   /// The initial value that the slider is set to.
   final double initialValue;
@@ -62,12 +54,10 @@ class SettingSliderTile extends SettingTile {
       context: context,
       useRootNavigator: false,
       builder: (context) {
-        return SettingSliderDialog(
+        return SettingCustomSliderDialog(
           title: dialogTitle,
           label: label,
-          min: min,
-          max: max,
-          divisions: divisions,
+          values: values,
           initialValue: initialValue,
           onChanged: onChanged,
         );

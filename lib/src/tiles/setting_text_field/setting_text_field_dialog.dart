@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 
+import '../../buttons/cancel_button.dart';
+import '../../buttons/ok_button.dart';
+
 class SettingTextFieldDialog extends StatefulWidget {
   const SettingTextFieldDialog({
     super.key,
@@ -41,23 +44,9 @@ class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.cancelButtonLabel ??
-                'Cancel',
-          ),
-        ),
-        TextButton(
+        CancelButton(),
+        OkButton(
           onPressed: () => Navigator.pop(context, _textEditingController.text),
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.okButtonLabel ??
-                'OK',
-          ),
         ),
       ],
     );

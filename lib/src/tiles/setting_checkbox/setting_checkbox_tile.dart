@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
+import '../setting_tile.dart';
+import '../../widgets/empty.dart';
 
 /// A setting tile with a checkbox.
 class SettingCheckboxTile extends SettingTile {

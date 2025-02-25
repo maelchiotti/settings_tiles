@@ -1,17 +1,16 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+
 import '../../buttons/cancel_button.dart';
 import '../../buttons/ok_button.dart';
 
-class SettingSliderDialog extends StatefulWidget {
-  const SettingSliderDialog({
+class SettingCustomSliderDialog extends StatefulWidget {
+  const SettingCustomSliderDialog({
     super.key,
     required this.title,
     required this.label,
-    required this.min,
-    required this.max,
-    required this.divisions,
+    required this.values,
     required this.initialValue,
     required this.onChanged,
   });
@@ -19,30 +18,40 @@ class SettingSliderDialog extends StatefulWidget {
   final String title;
 
   final String Function(double)? label;
-  final double min;
-  final double max;
-  final int? divisions;
+  final List<double> values;
   final double initialValue;
 
   final void Function(double)? onChanged;
 
   @override
-  State<SettingSliderDialog> createState() => _SettingSliderDialogState();
+  State<SettingCustomSliderDialog> createState() =>
+      _SettingCustomSliderDialogState();
 }
 
-class _SettingSliderDialogState extends State<SettingSliderDialog> {
-  late double _value;
+class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
+  /// The index of the current value.
+  late int _index;
+
+  /// The current value.
+  double get _value => widget.values[_index];
 
   @override
   void initState() {
     super.initState();
 
-    _value = widget.initialValue;
+    final valueIndex = widget.values.indexOf(widget.initialValue);
+
+    assert(
+      valueIndex != -1,
+      'The initial value of the discrete slider is not allowed: ${widget.initialValue} is not in ${widget.values}.',
+    );
+
+    _index = valueIndex;
   }
 
   void _onChanged(double value) {
     setState(() {
-      _value = value;
+      _index = value.toInt();
     });
 
     if (widget.onChanged != null) {
@@ -56,13 +65,12 @@ class _SettingSliderDialogState extends State<SettingSliderDialog> {
       title: Text(widget.title),
       content: SingleChildScrollView(
         child: Slider(
-          value: _value,
+          value: _index.toDouble(),
           label: widget.label != null
               ? widget.label!(_value)
               : _value.toStringAsFixed(2),
-          min: widget.min,
-          max: widget.max,
-          divisions: widget.divisions,
+          max: widget.values.length - 1,
+          divisions: widget.values.length - 1,
           onChanged: _onChanged,
         ),
       ),

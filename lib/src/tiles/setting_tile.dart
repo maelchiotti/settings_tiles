@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:settings_tiles/src/extensions/color_extension.dart';
-import 'package:settings_tiles/src/extensions/text_style_extension.dart';
+import '../extensions/color_extension.dart';
+import '../extensions/text_style_extension.dart';
 
 /// A setting tile.
 abstract class SettingTile extends StatelessWidget {

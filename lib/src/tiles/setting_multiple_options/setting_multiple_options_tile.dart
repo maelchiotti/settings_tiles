@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_dialog.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
+import 'setting_multiple_options_dialog.dart';
+import '../setting_tile.dart';
+import '../../widgets/empty.dart';
 
 import '../../types/multiple_options_details.dart';
 
@@ -28,7 +28,7 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
     this.onCanceled,
   }) : options = options
             .map((option) =>
-                (value: option, title: option.toString(), subtitle: null))
+                (value: option, title: option.toString(), subtitle: null),)
             .toList();
 
   /// A setting tile with multiple options that can be checked.

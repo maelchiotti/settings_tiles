@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../buttons/cancel_button.dart';
+import '../../buttons/ok_button.dart';
 import '../../types/multiple_options_details.dart';
 
 class SettingMultipleOptionsDialog<T extends Object> extends StatefulWidget {
@@ -75,24 +77,10 @@ class _SettingMultipleOptionsDialogState<T extends Object>
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.cancelButtonLabel ??
-                'Cancel',
-          ),
-        ),
-        TextButton(
+        CancelButton(),
+        OkButton(
           onPressed:
               canSubmit ? () => Navigator.pop(context, _selectedOptions) : null,
-          child: Text(
-            Localizations.of<MaterialLocalizations>(
-                        context, MaterialLocalizations)
-                    ?.okButtonLabel ??
-                'OK',
-          ),
         ),
       ],
     );

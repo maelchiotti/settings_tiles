@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_single_option/setting_single_option_dialog.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
+import 'setting_single_option_dialog.dart';
+import '../setting_tile.dart';
+import '../../widgets/empty.dart';
 
 import '../../types/multiple_options_details.dart';
 
@@ -27,7 +27,7 @@ class SettingSingleOptionTile<T extends Object> extends SettingTile {
     this.onCanceled,
   }) : options = options
             .map((option) =>
-                (value: option, title: option.toString(), subtitle: null))
+                (value: option, title: option.toString(), subtitle: null),)
             .toList();
 
   /// A setting tile with a single option that can be selected.

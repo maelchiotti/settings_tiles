@@ -1,8 +1,8 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
-import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
+import 'color_preview.dart';
+import '../setting_tile.dart';
+import '../../widgets/empty.dart';
 
 /// A setting tile with color pickers.
 class SettingColorTile extends SettingTile {
