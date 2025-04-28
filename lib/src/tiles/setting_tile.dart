@@ -42,12 +42,6 @@ abstract class SettingTile extends StatelessWidget {
   final String? description;
 
   /// An optional widget to show at the end of the tile.
-  ///
-  /// You need to disable and/or style the widget yourself if the tile is disabled.
-  /// To disable a button, set its `onTap` parameter to `null`.
-  /// To get a subdued color, use the `subdued` extension on the [Color] class.
-  /// To get a text style with a subdued color, use the `subdued` extension on
-  /// the [TextStyle] class.
   final Widget? trailing;
 
   /// Returns the leading widget of the tile.

@@ -244,6 +244,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                   SettingSection(
+                    divider: Divider(height: 1),
                     title: 'Section with dividers',
                     tiles: [
                       const SettingTextTile(

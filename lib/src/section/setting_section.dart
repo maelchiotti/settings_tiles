@@ -11,7 +11,7 @@ class SettingSection extends StatelessWidget {
     required this.tiles,
     super.key,
     this.title,
-    this.divider = const Divider(),
+    this.divider,
   });
 
   /// The title of the setting section.
