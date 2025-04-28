@@ -1,14 +1,16 @@
-include: package:flutter_lints/flutter.yaml
+include:
+  - package:flutter_lints/flutter.yaml
+  - package:very_good_analysis/analysis_options.yaml
+
+formatter:
+  page_width: 120
 
 analyzer:
+  errors:
+    public_member_api_docs: ignore
   language:
     strict-inference: true
 
 linter:
   rules:
-    - require_trailing_commas
-    - public_member_api_docs
-    - prefer_relative_imports
     - always_put_control_body_on_new_line
-    - curly_braces_in_flow_control_structures
-    - unawaited_futures

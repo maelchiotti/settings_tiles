@@ -1,17 +1,22 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'color_preview.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
+import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile with color pickers.
 class SettingColorTile extends SettingTile {
-  /// A setting tile with configurable color pickers and a current color preview.
+  /// A setting tile with configurable color pickers and a current color
+  /// preview.
   ///
-  /// By default, the two color pickers available are [ColorPickerType.primary] that shows primary colors,
+  /// By default, the two color pickers available are [ColorPickerType.primary]
+  /// that shows primary colors,
   /// and [ColorPickerType.accent] that shows accent colors.
-  /// To enable all the color pickers, pass [ColorPickerType.values] to the [colorPickers] parameter.
+  /// To enable all the color pickers, pass [ColorPickerType.values] to the
+  /// [colorPickers] parameter.
   const SettingColorTile({
+    required this.dialogTitle,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -20,11 +25,9 @@ class SettingColorTile extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
     this.colorPickers = const [ColorPickerType.primary, ColorPickerType.accent],
     this.enableOpacity = true,
     this.initialColor = Colors.white,
-    required this.onSubmitted,
     this.onCanceled,
   });
 
@@ -36,10 +39,12 @@ class SettingColorTile extends SettingTile {
 
   /// Whether to enable the slider to change the opacity of the picked color.
   ///
-  /// If set to `false`, the color picked will always have 100% opacity (meaning no transparency).
+  /// If set to `false`, the color picked will always have 100% opacity
+  /// (meaning no transparency).
   final bool enableOpacity;
 
-  /// The initial color that should be selected in the color pickers and should be previewed at the end of the tile.
+  /// The initial color that should be selected in the color pickers and should
+  /// be previewed at the end of the tile.
   final Color initialColor;
 
   /// Called when the color is picked.
@@ -56,7 +61,7 @@ class SettingColorTile extends SettingTile {
 
     await ColorPicker(
       title: Padding(
-        padding: const EdgeInsets.only(bottom: 8.0),
+        padding: const EdgeInsets.only(bottom: 8),
         child: Text(
           dialogTitle,
           style: Theme.of(context).textTheme.headlineMedium,
@@ -78,7 +83,7 @@ class SettingColorTile extends SettingTile {
     return InkWell(
       onTap: enabled ? () => _openDialog(context) : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),

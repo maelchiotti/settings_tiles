@@ -1,0 +1,2 @@
+C:/Users/maelc/Documents/dev/Projects/settings_tiles/example/android/app/.cxx/Debug/2i5a6o1o/x86/CMakeFiles/edit_cache.dir
+C:/Users/maelc/Documents/dev/Projects/settings_tiles/example/android/app/.cxx/Debug/2i5a6o1o/x86/CMakeFiles/rebuild_cache.dir

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'setting_text_field_dialog.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
+import 'package:settings_tiles/src/tiles/setting_text_field/setting_text_field_dialog.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile with a text field.
 class SettingTextFieldTile extends SettingTile {
   /// A setting tile with a text field to enter some text.
   const SettingTextFieldTile({
+    required this.dialogTitle,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -15,9 +17,7 @@ class SettingTextFieldTile extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
     this.initialText,
-    required this.onSubmitted,
     this.onCanceled,
   });
 
@@ -65,7 +65,7 @@ class SettingTextFieldTile extends SettingTile {
     return InkWell(
       onTap: enabled ? () => _openDialog(context) : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),

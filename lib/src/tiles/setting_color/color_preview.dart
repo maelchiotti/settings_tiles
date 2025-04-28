@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class ColorPreview extends StatelessWidget {
   /// A circle filled with the [color] to preview it.
   const ColorPreview({
-    super.key,
     required this.color,
+    super.key,
   });
 
   /// The color to preview.

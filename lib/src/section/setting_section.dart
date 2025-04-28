@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import '../tiles/setting_tile.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
 /// A section of the settings.
 class SettingSection extends StatelessWidget {
-  /// A setting section groups a list of settings [tiles], optionally separated by a [divider], with a [title] at the top.
+  /// A setting section groups a list of settings [tiles] with a [title].
   ///
   /// By default, a simple divider is shown between the tiles.
   /// To disable it completely, set the [divider] parameter to `null`.
   const SettingSection({
+    required this.tiles,
     super.key,
     this.title,
-    required this.tiles,
     this.divider = const Divider(),
   });
 
-  /// The title of the setting section, displayed at the top of the setting [tiles].
+  /// The title of the setting section.
   final String? title;
 
   /// The list of setting tiles.
@@ -26,14 +26,13 @@ class SettingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title != null)
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
               child: Text(
                 title!,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(

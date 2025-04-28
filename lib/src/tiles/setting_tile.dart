@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../extensions/color_extension.dart';
-import '../extensions/text_style_extension.dart';
+import 'package:settings_tiles/src/extensions/color_extension.dart';
+import 'package:settings_tiles/src/extensions/text_style_extension.dart';
 
 /// A setting tile.
 abstract class SettingTile extends StatelessWidget {
-  /// A setting tile displays information about a setting and handles the necessary interactions to modify it.
+  /// A setting tile displays information about a setting and handles the
+  /// necessary interactions to modify it.
   ///
-  /// It can be hidden by setting [visible] to `false`, and disabled by setting [enabled] to `false`.
+  /// It can be hidden by setting [visible] to `false`, and disabled by setting
+  /// [enabled] to `false`.
   const SettingTile({
     super.key,
     this.visible = true,
@@ -44,7 +46,8 @@ abstract class SettingTile extends StatelessWidget {
   /// You need to disable and/or style the widget yourself if the tile is disabled.
   /// To disable a button, set its `onTap` parameter to `null`.
   /// To get a subdued color, use the `subdued` extension on the [Color] class.
-  /// To get a text style with a subdued color, use the `subdued` extension on the [TextStyle] class.
+  /// To get a text style with a subdued color, use the `subdued` extension on
+  /// the [TextStyle] class.
   final Widget? trailing;
 
   /// Returns the leading widget of the tile.
@@ -64,7 +67,7 @@ abstract class SettingTile extends StatelessWidget {
   }
 
   /// Padding between the [leading] and the [body] widgets.
-  Widget get leadingBodyPadding => const Gap(16.0);
+  Widget get leadingBodyPadding => const Gap(16);
 
   /// Returns the body of the tile.
   ///
@@ -83,7 +86,7 @@ abstract class SettingTile extends StatelessWidget {
         children: [
           if (title != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: 1.0),
+              padding: const EdgeInsets.only(bottom: 1),
               child: Text(
                 title!,
                 style: enabled ? titleMedium : titleMedium?.subdued,
@@ -91,7 +94,7 @@ abstract class SettingTile extends StatelessWidget {
             ),
           if (value != null)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1.0),
+              padding: const EdgeInsets.symmetric(vertical: 1),
               child: Text(
                 value!,
                 style: enabled ? titleSmall : titleSmall?.subdued,
@@ -99,7 +102,7 @@ abstract class SettingTile extends StatelessWidget {
             ),
           if (description != null)
             Padding(
-              padding: const EdgeInsets.only(top: 1.0),
+              padding: const EdgeInsets.only(top: 1),
               child: Text(
                 description!,
                 style: enabled ? bodyMedium : bodyMedium?.subdued,
@@ -111,5 +114,5 @@ abstract class SettingTile extends StatelessWidget {
   }
 
   /// Padding between the [body] and the [trailing] widgets.
-  Widget get bodyTrailingPadding => const Gap(16.0);
+  Widget get bodyTrailingPadding => const Gap(16);
 }

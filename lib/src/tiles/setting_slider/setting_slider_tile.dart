@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'setting_slider_dialog.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
+import 'package:settings_tiles/src/tiles/setting_slider/setting_slider_dialog.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile with a slider.
 class SettingSliderTile extends SettingTile {
-  /// A setting tile with a slider to choose a value between a [min] value, a [max] value with a number of [divisions].
+  /// A setting tile with a slider to choose a value between a [min] value, a
+  /// [max] value with a number of [divisions].
   const SettingSliderTile({
+    required this.dialogTitle,
+    required this.initialValue,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -15,14 +19,11 @@ class SettingSliderTile extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
     this.label,
     this.min = 0.0,
     this.max = 1.0,
     this.divisions,
-    required this.initialValue,
     this.onChanged,
-    required this.onSubmitted,
     this.onCanceled,
   });
 
@@ -33,7 +34,8 @@ class SettingSliderTile extends SettingTile {
   ///
   /// The [value] is the current value of the slider.
   ///
-  /// If `null`, the [value] of the slider is displayed directly with a 2 digits precision.
+  /// If `null`, the [value] of the slider is displayed directly with a 2 digits
+  /// precision.
   final String Function(double value)? label;
 
   /// The minimum value that can be selected in the slider.
@@ -94,7 +96,7 @@ class SettingSliderTile extends SettingTile {
     return InkWell(
       onTap: enabled ? () => _openDialog(context) : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),

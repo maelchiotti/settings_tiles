@@ -1,15 +1,15 @@
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs private class
 
 import 'package:flutter/material.dart';
 
-import '../../buttons/cancel_button.dart';
-import '../../buttons/ok_button.dart';
+import 'package:settings_tiles/src/buttons/cancel_button.dart';
+import 'package:settings_tiles/src/buttons/ok_button.dart';
 
 class SettingTextFieldDialog extends StatefulWidget {
   const SettingTextFieldDialog({
-    super.key,
     required this.title,
     required this.initialText,
+    super.key,
   });
 
   final String title;
@@ -35,7 +35,7 @@ class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
     return AlertDialog.adaptive(
       title: Text(widget.title),
       content: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: TextField(
             controller: _textEditingController,
@@ -44,7 +44,7 @@ class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
         ),
       ),
       actions: [
-        CancelButton(),
+        const CancelButton(),
         OkButton(
           onPressed: () => Navigator.pop(context, _textEditingController.text),
         ),

@@ -1,12 +1,11 @@
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs private class
 
 import 'package:flutter/material.dart';
-import '../../buttons/cancel_button.dart';
-import '../../buttons/ok_button.dart';
+import 'package:settings_tiles/src/buttons/cancel_button.dart';
+import 'package:settings_tiles/src/buttons/ok_button.dart';
 
 class SettingSliderDialog extends StatefulWidget {
   const SettingSliderDialog({
-    super.key,
     required this.title,
     required this.label,
     required this.min,
@@ -14,6 +13,7 @@ class SettingSliderDialog extends StatefulWidget {
     required this.divisions,
     required this.initialValue,
     required this.onChanged,
+    super.key,
   });
 
   final String title;
@@ -45,9 +45,8 @@ class _SettingSliderDialogState extends State<SettingSliderDialog> {
       _value = value;
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-    }
+      widget.onChanged?.call(value);
+
   }
 
   @override
@@ -67,7 +66,7 @@ class _SettingSliderDialogState extends State<SettingSliderDialog> {
         ),
       ),
       actions: [
-        CancelButton(),
+        const CancelButton(),
         OkButton(
           onPressed: () => Navigator.pop(context, _value),
         ),

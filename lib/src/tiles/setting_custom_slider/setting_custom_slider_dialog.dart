@@ -1,18 +1,19 @@
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs private class
+
 
 import 'package:flutter/material.dart';
 
-import '../../buttons/cancel_button.dart';
-import '../../buttons/ok_button.dart';
+import 'package:settings_tiles/src/buttons/cancel_button.dart';
+import 'package:settings_tiles/src/buttons/ok_button.dart';
 
 class SettingCustomSliderDialog extends StatefulWidget {
   const SettingCustomSliderDialog({
-    super.key,
     required this.title,
     required this.label,
     required this.values,
     required this.initialValue,
     required this.onChanged,
+    super.key,
   });
 
   final String title;
@@ -43,7 +44,8 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
 
     assert(
       valueIndex != -1,
-      'The initial value of the discrete slider is not allowed: ${widget.initialValue} is not in ${widget.values}.',
+      'The initial value of the discrete slider is not allowed: '
+          '${widget.initialValue} is not in ${widget.values}.',
     );
 
     _index = valueIndex;
@@ -54,9 +56,8 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       _index = value.toInt();
     });
 
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-    }
+      widget.onChanged?.call(value);
+
   }
 
   @override
@@ -75,7 +76,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
         ),
       ),
       actions: [
-        CancelButton(),
+        const CancelButton(),
         OkButton(
           onPressed: () => Navigator.pop(context, _value),
         ),

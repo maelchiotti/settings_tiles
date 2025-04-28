@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'setting_single_option_dialog.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
-
-import '../../types/multiple_options_details.dart';
+import 'package:settings_tiles/src/tiles/setting_single_option/setting_single_option_dialog.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/types/multiple_options_details.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile with a single option.
 class SettingSingleOptionTile<T extends Object> extends SettingTile {
   /// A setting tile with a single option that can be selected.
   ///
-  /// The title of the tile in the dialog is the value of the `toString()` method for each option.
-  /// No subtitle is displayed. To specify them, use [SettingSingleOptionTile.detailed] instead.
+  /// The title of the tile in the dialog is the value of the `toString()`
+  /// method for each option. No subtitle is displayed. To specify them, use
+  /// [SettingSingleOptionTile.detailed] instead.
   SettingSingleOptionTile({
+    required this.dialogTitle,
+    required List<T> options,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -20,20 +23,23 @@ class SettingSingleOptionTile<T extends Object> extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
-    required List<T> options,
     this.initialOption,
-    required this.onSubmitted,
     this.onCanceled,
   }) : options = options
-            .map((option) =>
-                (value: option, title: option.toString(), subtitle: null),)
+            .map(
+              (option) =>
+                  (value: option, title: option.toString(), subtitle: null),
+            )
             .toList();
 
   /// A setting tile with a single option that can be selected.
   ///
-  /// This constructor allows to specify the title and an optional subtitle for each option.
+  /// This constructor allows to specify the title and an optional subtitle for
+  /// each option.
   const SettingSingleOptionTile.detailed({
+    required this.dialogTitle,
+    required this.options,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -42,10 +48,7 @@ class SettingSingleOptionTile<T extends Object> extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
-    required this.options,
     this.initialOption,
-    required this.onSubmitted,
     this.onCanceled,
   });
 
@@ -97,7 +100,7 @@ class SettingSingleOptionTile<T extends Object> extends SettingTile {
     return InkWell(
       onTap: enabled ? () => _openDialog(context) : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),

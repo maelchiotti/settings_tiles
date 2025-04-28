@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile that displays text.
 class SettingTextTile extends SettingTile {
@@ -22,7 +22,7 @@ class SettingTextTile extends SettingTile {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
           leading(context),

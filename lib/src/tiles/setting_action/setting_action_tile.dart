@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile that performs an action when tapped.
 class SettingActionTile extends SettingTile {
-  /// A setting tile that calls [onTap] when tapped to allow performing any action.
+  /// A setting tile that calls [onTap] when tapped.
   const SettingActionTile({
+    required this.onTap,
     super.key,
     super.visible,
     super.enabled,
@@ -14,7 +15,6 @@ class SettingActionTile extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.onTap,
   });
 
   /// Called when the tile is tapped.
@@ -29,7 +29,7 @@ class SettingActionTile extends SettingTile {
     return InkWell(
       onTap: enabled ? onTap : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),

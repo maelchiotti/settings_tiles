@@ -1,18 +1,18 @@
-// ignore_for_file: public_member_api_docs
+// ignore_for_file: public_member_api_docs private class
 
 import 'package:flutter/material.dart';
 
-import '../../buttons/cancel_button.dart';
-import '../../buttons/ok_button.dart';
-import '../../types/multiple_options_details.dart';
+import 'package:settings_tiles/src/buttons/cancel_button.dart';
+import 'package:settings_tiles/src/buttons/ok_button.dart';
+import 'package:settings_tiles/src/types/multiple_options_details.dart';
 
 class SettingMultipleOptionsDialog<T extends Object> extends StatefulWidget {
   const SettingMultipleOptionsDialog({
-    super.key,
     required this.title,
     required this.options,
     required this.initialOptions,
     required this.minOptions,
+    super.key,
   });
 
   final String title;
@@ -59,7 +59,7 @@ class _SettingMultipleOptionsDialogState<T extends Object>
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 16),
       title: Text(widget.title),
       content: SingleChildScrollView(
         child: ListBody(
@@ -77,7 +77,7 @@ class _SettingMultipleOptionsDialogState<T extends Object>
         ),
       ),
       actions: [
-        CancelButton(),
+        const CancelButton(),
         OkButton(
           onPressed:
               canSubmit ? () => Navigator.pop(context, _selectedOptions) : null,

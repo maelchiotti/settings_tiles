@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class OkButton extends StatelessWidget {
   /// An OK button that executes a function when pressed.
   const OkButton({
-    super.key,
     required this.onPressed,
+    super.key,
   });
 
   /// Function executed when this is pressed.

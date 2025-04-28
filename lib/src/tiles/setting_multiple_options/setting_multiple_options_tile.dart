@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'setting_multiple_options_dialog.dart';
-import '../setting_tile.dart';
-import '../../widgets/empty.dart';
-
-import '../../types/multiple_options_details.dart';
+import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_dialog.dart';
+import 'package:settings_tiles/src/tiles/setting_tile.dart';
+import 'package:settings_tiles/src/types/multiple_options_details.dart';
+import 'package:settings_tiles/src/widgets/empty.dart';
 
 /// A setting tile with multiple options.
 class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
   /// A setting tile with multiple options that can be checked.
   ///
-  /// The title of the tile in the dialog is the value of the `toString()` method for each option.
-  /// No subtitle is displayed. To specify them, use [SettingMultipleOptionsTile.detailed] instead.
+  /// The title of the tile in the dialog is the value of the `toString()`
+  /// method for each option. No subtitle is displayed. To specify them, use
+  /// [SettingMultipleOptionsTile.detailed] instead.
   SettingMultipleOptionsTile({
+    required this.dialogTitle,
+    required List<T> options,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -20,21 +23,24 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
-    required List<T> options,
     this.initialOptions = const [],
     this.minOptions = 0,
-    required this.onSubmitted,
     this.onCanceled,
   }) : options = options
-            .map((option) =>
-                (value: option, title: option.toString(), subtitle: null),)
+            .map(
+              (option) =>
+                  (value: option, title: option.toString(), subtitle: null),
+            )
             .toList();
 
   /// A setting tile with multiple options that can be checked.
   ///
-  /// This constructor allows to specify the title and an optional subtitle for each option.
+  /// This constructor allows to specify the title and an optional subtitle for
+  /// each option.
   const SettingMultipleOptionsTile.detailed({
+    required this.dialogTitle,
+    required this.options,
+    required this.onSubmitted,
     super.key,
     super.visible,
     super.enabled,
@@ -43,11 +49,8 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
     super.value,
     super.description,
     super.trailing,
-    required this.dialogTitle,
-    required this.options,
     this.initialOptions = const [],
     this.minOptions = 0,
-    required this.onSubmitted,
     this.onCanceled,
   });
 
@@ -103,7 +106,7 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
     return InkWell(
       onTap: enabled ? () => _openDialog(context) : null,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             leading(context),
