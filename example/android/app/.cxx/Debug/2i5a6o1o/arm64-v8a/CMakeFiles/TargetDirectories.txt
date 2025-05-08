@@ -1,2 +1,0 @@
-C:/Users/maelc/Documents/dev/Projects/settings_tiles/example/android/app/.cxx/Debug/2i5a6o1o/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/maelc/Documents/dev/Projects/settings_tiles/example/android/app/.cxx/Debug/2i5a6o1o/arm64-v8a/CMakeFiles/rebuild_cache.dir
