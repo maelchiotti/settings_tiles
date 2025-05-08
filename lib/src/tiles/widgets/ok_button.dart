@@ -1,14 +1,13 @@
+// ignore_for_file: public_member_api_docs private class
+
 import 'package:flutter/material.dart';
 
-/// OK button.
 class OkButton extends StatelessWidget {
-  /// An OK button that executes a function when pressed.
   const OkButton({
     required this.onPressed,
     super.key,
   });
 
-  /// Function executed when this is pressed.
   final VoidCallback? onPressed;
 
   @override

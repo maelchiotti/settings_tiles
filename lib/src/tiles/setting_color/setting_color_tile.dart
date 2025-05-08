@@ -2,19 +2,17 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile with color pickers.
+/// Color setting tile.
 class SettingColorTile extends SettingTile {
   /// A setting tile with configurable color pickers and a current color
   /// preview.
   ///
   /// By default, the two color pickers available are [ColorPickerType.primary]
-  /// that shows primary colors,
-  /// and [ColorPickerType.accent] that shows accent colors.
-  /// To enable all the color pickers, pass [ColorPickerType.values] to the
-  /// [colorPickers] parameter.
-  const SettingColorTile({
+  /// that shows primary colors, and [ColorPickerType.accent] that shows accent
+  /// colors. To enable all the color pickers, pass [ColorPickerType.values] to
+  /// the [colorPickers] parameter.
+  SettingColorTile({
     required this.dialogTitle,
     required this.onSubmitted,
     super.key,
@@ -24,12 +22,13 @@ class SettingColorTile extends SettingTile {
     super.title,
     super.value,
     super.description,
-    super.trailing,
     this.colorPickers = const [ColorPickerType.primary, ColorPickerType.accent],
     this.enableOpacity = true,
     this.initialColor = Colors.white,
     this.onCanceled,
-  });
+  }) : super(
+          trailing: ColorPreview(color: initialColor),
+        );
 
   /// The title of the dialog.
   final String dialogTitle;
@@ -76,24 +75,6 @@ class SettingColorTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
-      onTap: enabled ? () => _openDialog(context) : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            bodyTrailingPadding,
-            ColorPreview(color: initialColor),
-          ],
-        ),
-      ),
-    );
+    return tile(context, onTap: enabled ? () => _openDialog(context) : null);
   }
 }

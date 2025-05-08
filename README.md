@@ -16,16 +16,20 @@ Create a setting section that displays a list of setting tiles, optionally separ
 
 ```dart
 SettingSection(
-  title: 'A setting section',
+  title: SettingSectionTitle('A setting section'),
   tiles: [
     // A list of tiles
   ],
 )
 ```
 
+Use a `SettingSectionTitle` to get a pre-styled title.
+
 To remove the dividers between the setting tiles, set the `divider` parameter to `null`.
 
 ### Tiles
+
+Use a `SettingTileIcon` to get a pre-styled icon and a `SettingTileValue` to get a pre-styled value.
 
 #### Text
 
@@ -33,9 +37,9 @@ A simple tile that only displays text and has no interactions:
 
 ```dart
 const SettingTextTile(
-  icon: Icons.abc,
-  title: 'Text',
-  description: 'This is a text tile',
+  icon: SettingTileIcon(Icons.abc),
+  title: Text('Text'),
+  description: Text('This is a text tile'),
 )
 ```
 
@@ -45,9 +49,9 @@ A tile that calls an action when tapped:
 
 ```dart
 SettingActionTile(
-  icon: Icons.touch_app,
-  title: 'Action',
-  description: 'This is an action tile',
+  icon: SettingTileIcon(Icons.touch_app),
+  title: Text('Action'),
+  description: Text('This is an action tile'),
   onTap: () {
     print('The action tile was tapped');
   },
@@ -60,12 +64,14 @@ A tile that displays a switch:
 
 ```dart
 SettingSwitchTile(
-  icon: Icons.toggle_on,
-  title: 'Switch',
-  description: 'This is a switch tile',
-  toggled: true,
+  icon: SettingTileIcon(Icons.toggle_on),
+  title: Text('Switch'),
+  description: Text('This is a switch tile'),
+  toggled: toggled,
   onChanged: (value) {
-    // Handle state change
+    setState(() {
+      toggled = value;
+    });
   },
 )
 ```
@@ -76,16 +82,18 @@ A tile that displays a checkbox:
 
 ```dart
 SettingCheckboxTile(
-  icon: Icons.check_box,
-  title: 'Checkbox',
-  description: 'This is a checkbox tile',
-  checked: true,
+  icon: SettingTileIcon(Icons.check_box),
+  title: Text('Title'),
+  description: Text('This is a checkbox tile'),
+  checked: checked,
   onChanged: (value) {
     if (value == null) {
       return;
     }
 
-    // Handle state change
+    setState(() {
+      checked = value;
+    });
   },
 )
 ```
@@ -96,14 +104,17 @@ A tile that shows a dialog with a single option to choose:
 
 ```dart
 SettingSingleOptionTile(
-  icon: Icons.radio_button_on,
-  title: 'Single option',
-  description: 'This is a single option tile',
+  icon: SettingTileIcon(Icons.radio_button_on),
+  title: Text('Single option'),
+  value: SettingTileValue(selectedOption),
+  description: Text('This is a single option tile'),
   dialogTitle: 'Options',
   options: const ['Option 1', 'Option 2', 'Option 3'],
-  initialOption: 'Option 1',
+  initialOption: selectedOption,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      selectedOption = value;
+    });
   },
 )
 ```
@@ -113,9 +124,10 @@ The list of options must be a list of `MultipleOptionsDetails`, which is a recor
 
 ```dart
 SettingSingleOptionTile.detailed(
-  icon: Icons.radio_button_on,
-  title: 'Single option (detailed)',
-  description: 'This is a detailed single option tile',
+  icon: SettingTileIcon(Icons.radio_button_on),
+  title: Text('Single option (detailed)'),
+  value: SettingTileValue(selectedOption),
+  description: Text('This is a detailed single option tile'),
   dialogTitle: 'Options',
   options: const [
     (value: 'Option 1', title: 'Option n°1', subtitle: 'This is option n°1'),
@@ -124,7 +136,9 @@ SettingSingleOptionTile.detailed(
   ],
   initialOption: selectedOption,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      selectedOption = value;
+    });
   },
 ),
 ```
@@ -135,14 +149,17 @@ A tile that shows a dialog with multiple options to choose from:
 
 ```dart
 SettingMultipleOptionsTile(
-  icon: Icons.checklist,
-  title: 'Multiple options',
-  description: 'This is a multiple options tile',
+  icon: SettingTileIcon(Icons.checklist),
+  title: Text('Multiple options'),
+  value: SettingTileValue(selectedOptions.join(' | ')),
+  description: Text('This is a multiple options tile'),
   dialogTitle: 'Options',
   options: const ['Option 1', 'Option 2', 'Option 3'],
-  initialOptions: const ['Option 1', 'Option 3'],
+  initialOptions: selectedOptions,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      selectedOptions = value;
+    });
   },
 )
 ```
@@ -152,18 +169,21 @@ The list of options must be a list of `MultipleOptionsDetails`, which is a recor
 
 ```dart
 SettingMultipleOptionsTile.detailed(
-  icon: Icons.checklist,
-  title: 'Multiple options (detailed)',
-  description: 'This is a detailed multiple options tile',
+  icon: SettingTileIcon(Icons.checklist),
+  title: Text('Multiple options (detailed)'),
+  value: SettingTileValue(selectedOptions.join(' | ')),
+  description: Text('This is a detailed multiple options tile'),
   dialogTitle: 'Options',
   options: const [
     (value: 'Option 1', title: 'Option n°1', subtitle: 'This is option n°1'),
     (value: 'Option 2', title: 'Option n°2', subtitle: 'This is option n°2'),
     (value: 'Option 3', title: 'Option n°3', subtitle: 'This is option n°3'),
   ],
-  initialOptions: const ['Option 1', 'Option 3'],
+  initialOptions: selectedOptions,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      selectedOptions = value;
+    });
   },
 ),
 ``` 
@@ -174,13 +194,16 @@ A tile that shows a dialog with a text field:
 
 ```dart
 SettingTextFieldTile(
-  icon: Icons.text_fields,
-  title: 'Text field',
-  description: 'This is a text field tile',
+  icon: SettingTileIcon(Icons.text_fields),
+  title: Text('Text field'),
+  value: SettingTileValue(text),
+  description: Text('This is a text field tile'),
   dialogTitle: 'Text',
-  initialText: 'Some text',
+  initialText: text,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      text = value;
+    });
   },
 )
 ```
@@ -191,18 +214,54 @@ A tile that shows a dialog with a slider:
 
 ```dart
 SettingSliderTile(
-  icon: Icons.linear_scale,
-  title: 'Slider',
-  description: 'This is a slider tile',
+  icon: SettingTileIcon(Icons.linear_scale),
+  title: Text('Slider'),
+  value: SettingTileValue(sliderValue.toString()),
+  description: Text('This is a slider tile'),
   dialogTitle: 'Slider',
   min: 1.0,
   max: 10.0,
   divisions: 9,
-  initialValue: 5.0,
+  initialValue: sliderValue,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      sliderValue = value;
+    });
   },
 )
+```
+
+#### Custom slider
+
+A tile that shows a dialog with a custom slider, allowing you to specify the values and their labels:
+
+```dart
+SettingCustomSliderTile(
+  icon: SettingTileIcon(Icons.linear_scale),
+  title: Text('Custom slider'),
+  value: SettingTileValue(customSliderValue.toString()),
+  description: Text('This is a custom slider tile'),
+  dialogTitle: 'Custom slider',
+  values: [1, 7, 30],
+  initialValue: customSliderValue,
+  label: (value) {
+    switch (value) {
+      case 1:
+        return 'Day';
+      case 7:
+        return 'Week';
+      case 30:
+        return 'Month';
+      default:
+        throw Exception();
+    }
+  },
+  onSubmitted: (value) {
+    setState(() {
+      customSliderValue = value;
+    });
+  },
+),
 ```
 
 #### Color picker
@@ -211,13 +270,15 @@ A tile that shows a dialog with some color pickers and a preview of the picked c
 
 ```dart
 SettingColorTile(
-  icon: Icons.color_lens,
-  title: 'Color',
-  description: 'This is a color tile',
+  icon: SettingTileIcon(Icons.color_lens),
+  title: Text('Color'),
+  description: Text('This is a color tile'),
   dialogTitle: 'Color',
-  initialColor: Colors.blue,
+  initialColor: color,
   onSubmitted: (value) {
-    // Handle state change
+    setState(() {
+      color = value;
+    });
   },
 )
 ```
@@ -231,12 +292,10 @@ A tile that shows information about the application and opens Flutter's `AboutDi
 ```dart
 const SettingAboutTile(
   applicationIcon: Image.asset('assets/icon/icon.png'),
-  title: 'Application name',
-  description: 'v1.0.0',
+  applicationName: 'Application name',
+  applicationVersion: 'v1.0.0',
 )
 ```
-
-The name of the application needs to passed to the `title` parameter, and the version to the `description` parameter.
 
 ## Example
 

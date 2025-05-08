@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile with a switch.
+/// Switch setting tile.
 class SettingSwitchTile extends SettingTile {
   /// A setting tile with a checkbox that can be toggled and untoggled.
-  const SettingSwitchTile({
+  SettingSwitchTile({
     required this.toggled,
     required this.onChanged,
     super.key,
@@ -15,7 +14,12 @@ class SettingSwitchTile extends SettingTile {
     super.title,
     super.value,
     super.description,
-  });
+  }) : super(
+          trailing: Switch(
+            value: toggled,
+            onChanged: enabled ? onChanged : null,
+          ),
+        );
 
   /// Whether the switch it toggled.
   final bool toggled;
@@ -28,27 +32,9 @@ class SettingSwitchTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
+    return tile(
+      context,
       onTap: enabled && onChanged != null ? () => onChanged!(!toggled) : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            bodyTrailingPadding,
-            Switch(
-              value: toggled,
-              onChanged: enabled ? onChanged : null,
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

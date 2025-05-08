@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs private class
 
 import 'package:flutter/material.dart';
-import 'package:settings_tiles/src/buttons/cancel_button.dart';
-import 'package:settings_tiles/src/buttons/ok_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/cancel_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/ok_button.dart';
 
 class SettingSliderDialog extends StatefulWidget {
   const SettingSliderDialog({
@@ -45,8 +45,7 @@ class _SettingSliderDialogState extends State<SettingSliderDialog> {
       _value = value;
     });
 
-      widget.onChanged?.call(value);
-
+    widget.onChanged?.call(value);
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:settings_tiles/src/extensions/color_extension.dart';
-import 'package:settings_tiles/src/extensions/text_style_extension.dart';
+import 'package:settings_tiles/src/tiles/widgets/setting_tile_icon.dart';
+import 'package:settings_tiles/src/tiles/widgets/setting_tile_value.dart';
 
 /// A setting tile.
 abstract class SettingTile extends StatelessWidget {
@@ -28,85 +27,47 @@ abstract class SettingTile extends StatelessWidget {
   final bool enabled;
 
   /// The icon of the tile.
-  final IconData? icon;
+  ///
+  /// Use the [SettingTileIcon] class to have the icon automatically styled.
+  final Widget? icon;
 
   /// The title of the tile.
-  final String? title;
+  final Widget? title;
 
   /// The current value of the setting.
   ///
   /// If set, it is displayed between the title and the description.
-  final String? value;
+  ///
+  /// Use the [SettingTileValue] class to have the text automatically styled.
+  final Widget? value;
 
   /// The description of the title.
-  final String? description;
+  final Widget? description;
 
   /// An optional widget to show at the end of the tile.
   final Widget? trailing;
 
-  /// Returns the leading widget of the tile.
-  ///
-  /// Contains the [icon].
-  Widget leading(BuildContext context) {
-    final theme = Theme.of(context);
+  /// The tile to display.
+  Widget tile(BuildContext context, {GestureTapCallback? onTap}) {
+    if (!visible) {
+      return const SizedBox.shrink();
+    }
 
-    return SizedBox(
-      width: 48,
-      child: Icon(
-        icon,
-        size: 32,
-        color: enabled ? null : theme.iconTheme.color?.subdued,
-      ),
+    return ListTile(
+      enabled: enabled,
+      leading: icon,
+      title: title,
+      subtitle: description != null || value != null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (value != null) value!,
+                if (description != null) description!,
+              ],
+            )
+          : null,
+      trailing: trailing,
+      onTap: onTap,
     );
   }
-
-  /// Padding between the [leading] and the [body] widgets.
-  Widget get leadingBodyPadding => const Gap(16);
-
-  /// Returns the body of the tile.
-  ///
-  /// Contains the [title], the [value] and the [description].
-  Widget body(BuildContext context) {
-    final theme = Theme.of(context);
-
-    final titleMedium = theme.textTheme.titleMedium;
-    final titleSmall = theme.textTheme.titleSmall
-        ?.copyWith(color: theme.colorScheme.secondary);
-    final bodyMedium = theme.textTheme.bodyMedium;
-
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (title != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 1),
-              child: Text(
-                title!,
-                style: enabled ? titleMedium : titleMedium?.subdued,
-              ),
-            ),
-          if (value != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1),
-              child: Text(
-                value!,
-                style: enabled ? titleSmall : titleSmall?.subdued,
-              ),
-            ),
-          if (description != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 1),
-              child: Text(
-                description!,
-                style: enabled ? bodyMedium : bodyMedium?.subdued,
-              ),
-            ),
-        ],
-      ),
-    );
-  }
-
-  /// Padding between the [body] and the [trailing] widgets.
-  Widget get bodyTrailingPadding => const Gap(16);
 }

@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs private class
 
 import 'package:flutter/material.dart';
-
-import 'package:settings_tiles/src/buttons/cancel_button.dart';
-import 'package:settings_tiles/src/buttons/ok_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/cancel_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/ok_button.dart';
 import 'package:settings_tiles/src/types/multiple_options_details.dart';
 
 class SettingSingleOptionDialog<T extends Object> extends StatefulWidget {

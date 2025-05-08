@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_custom_slider/setting_custom_slider_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile with a custom slider.
+/// Custom setting slider tile.
 class SettingCustomSliderTile extends SettingTile {
   /// A setting tile with a slider to choose a value between a set of custom
   /// [values].
@@ -79,26 +78,6 @@ class SettingCustomSliderTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
-      onTap: enabled ? () => _openDialog(context) : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            if (trailing != null) ...[
-              bodyTrailingPadding,
-              trailing!,
-            ],
-          ],
-        ),
-      ),
-    );
+    return tile(context, onTap: enabled ? () => _openDialog(context) : null);
   }
 }

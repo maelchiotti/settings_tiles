@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_text_field/setting_text_field_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile with a text field.
+/// Text field setting tile.
 class SettingTextFieldTile extends SettingTile {
   /// A setting tile with a text field to enter some text.
   const SettingTextFieldTile({
@@ -58,26 +57,6 @@ class SettingTextFieldTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
-      onTap: enabled ? () => _openDialog(context) : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            if (trailing != null) ...[
-              bodyTrailingPadding,
-              trailing!,
-            ],
-          ],
-        ),
-      ),
-    );
+    return tile(context, onTap: enabled ? () => _openDialog(context) : null);
   }
 }

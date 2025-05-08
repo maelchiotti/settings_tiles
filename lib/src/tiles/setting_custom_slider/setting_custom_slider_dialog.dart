@@ -1,10 +1,8 @@
 // ignore_for_file: public_member_api_docs private class
 
-
 import 'package:flutter/material.dart';
-
-import 'package:settings_tiles/src/buttons/cancel_button.dart';
-import 'package:settings_tiles/src/buttons/ok_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/cancel_button.dart';
+import 'package:settings_tiles/src/tiles/widgets/ok_button.dart';
 
 class SettingCustomSliderDialog extends StatefulWidget {
   const SettingCustomSliderDialog({
@@ -45,7 +43,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
     assert(
       valueIndex != -1,
       'The initial value of the discrete slider is not allowed: '
-          '${widget.initialValue} is not in ${widget.values}.',
+      '${widget.initialValue} is not in ${widget.values}.',
     );
 
     _index = valueIndex;
@@ -56,8 +54,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       _index = value.toInt();
     });
 
-      widget.onChanged?.call(value);
-
+    widget.onChanged?.call(value);
   }
 
   @override

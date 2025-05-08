@@ -1,8 +1,8 @@
+// ignore_for_file: public_member_api_docs private class
+
 import 'package:flutter/material.dart';
 
-/// Cancel button.
 class CancelButton extends StatelessWidget {
-  /// A cancel button that pops the current route.
   const CancelButton({super.key});
 
   @override

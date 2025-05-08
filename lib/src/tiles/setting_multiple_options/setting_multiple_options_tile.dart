@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/types/multiple_options_details.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile with multiple options.
+/// Multiple options setting tile.
 class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
   /// A setting tile with multiple options that can be checked.
   ///
@@ -99,26 +98,6 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
-      onTap: enabled ? () => _openDialog(context) : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            if (trailing != null) ...[
-              bodyTrailingPadding,
-              trailing!,
-            ],
-          ],
-        ),
-      ),
-    );
+    return tile(context, onTap: enabled ? () => _openDialog(context) : null);
   }
 }

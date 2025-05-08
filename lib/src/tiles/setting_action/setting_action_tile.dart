@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile that performs an action when tapped.
+/// Action setting tile.
 class SettingActionTile extends SettingTile {
   /// A setting tile that calls [onTap] when tapped.
   const SettingActionTile({
@@ -22,26 +21,6 @@ class SettingActionTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return InkWell(
-      onTap: enabled ? onTap : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            leading(context),
-            leadingBodyPadding,
-            body(context),
-            if (trailing != null) ...[
-              bodyTrailingPadding,
-              trailing!,
-            ],
-          ],
-        ),
-      ),
-    );
+    return tile(context, onTap: onTap);
   }
 }

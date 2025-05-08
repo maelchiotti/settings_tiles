@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
-import 'package:settings_tiles/src/widgets/empty.dart';
 
-/// A setting tile that displays text.
+/// Text setting tile.
 class SettingTextTile extends SettingTile {
   /// A setting tile that only displays text with no interactions.
   const SettingTextTile({
@@ -17,23 +16,6 @@ class SettingTextTile extends SettingTile {
 
   @override
   Widget build(BuildContext context) {
-    if (!visible) {
-      return const Empty();
-    }
-
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          leading(context),
-          leadingBodyPadding,
-          body(context),
-          if (trailing != null) ...[
-            bodyTrailingPadding,
-            trailing!,
-          ],
-        ],
-      ),
-    );
+    return tile(context);
   }
 }
