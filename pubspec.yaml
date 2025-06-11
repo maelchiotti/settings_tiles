@@ -4,7 +4,7 @@ description: "A collection of settings tiles to easily create a settings screen"
 repository: https://github.com/maelchiotti/settings_tiles
 issue_tracker: https://github.com/maelchiotti/settings_tiles/issues
 
-version: 6.0.0
+version: 6.0.1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -18,5 +18,5 @@ dependencies:
   gap: ^3.0.1
 
 dev_dependencies:
-  flutter_lints: ^5.0.0
-  very_good_analysis: ^7.0.0
+  flutter_lints: ^6.0.0
+  very_good_analysis: ^9.0.0
