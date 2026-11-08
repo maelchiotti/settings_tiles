@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "attribution": { "pr": "" },
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub get*)",
+      "Bash(flutter pub deps*)",
+      "Bash(flutter pub outdated*)",
+      "Bash(flutter analyze*)",
+      "Bash(flutter test*)",
+      "Bash(flutter gen-l10n*)",
+      "Bash(flutter --version)",
+      "Bash(dart analyze*)",
+      "Bash(dart format*)",
+      "Bash(dart pub publish --dry-run*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git fetch*)",
+      "Bash(git branch*)",
+      "Bash(git ls-files*)"
+    ],
+    "ask": ["Bash(git commit*)", "Bash(git push*)", "Bash(git reset*)", "Bash(git checkout*)", "Bash(git tag*)"],
+    "deny": ["Bash(dart pub publish)", "Bash(dart pub publish --force*)", "Bash(dart pub publish -f*)", "Bash(flutter pub publish*)", "Bash(make publish*)", "Read(./**/build/**)"]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dart \"$CLAUDE_PROJECT_DIR/.claude/hooks/format.dart\""
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh\"",
+            "timeout": 600
+          }
+        ]
+      }
+    ]
+  }
+}
