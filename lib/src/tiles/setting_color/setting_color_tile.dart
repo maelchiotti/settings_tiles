@@ -58,7 +58,9 @@ class SettingColorTile extends SettingTile {
         colorPickerType: colorPickers.contains(colorPickerType),
     };
 
-    await ColorPicker(
+    var pickedColor = initialColor;
+
+    final submitted = await ColorPicker(
       title: Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: Text(
@@ -69,8 +71,15 @@ class SettingColorTile extends SettingTile {
       pickersEnabled: colorPickersMap,
       enableOpacity: enableOpacity,
       color: initialColor,
-      onColorChanged: onSubmitted,
+      onColorChanged: (color) => pickedColor = color,
     ).showPickerDialog(context);
+
+    // Only submit the color when the dialog is validated
+    if (submitted) {
+      onSubmitted(pickedColor);
+    } else {
+      onCanceled?.call();
+    }
   }
 
   @override
