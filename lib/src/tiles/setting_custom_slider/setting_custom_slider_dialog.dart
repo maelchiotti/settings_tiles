@@ -46,7 +46,27 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       '${widget.initialValue} is not in ${widget.values}.',
     );
 
-    _index = valueIndex;
+    // In release mode, fall back to the closest allowed value
+    _index = valueIndex != -1
+        ? valueIndex
+        : _closestIndex(widget.initialValue);
+  }
+
+  /// Returns the index of the value of [SettingCustomSliderDialog.values]
+  /// that is the closest to [value].
+  int _closestIndex(double value) {
+    var closestIndex = 0;
+
+    for (var index = 1; index < widget.values.length; index++) {
+      final distance = (widget.values[index] - value).abs();
+      final closestDistance = (widget.values[closestIndex] - value).abs();
+
+      if (distance < closestDistance) {
+        closestIndex = index;
+      }
+    }
+
+    return closestIndex;
   }
 
   void _onChanged(double value) {
