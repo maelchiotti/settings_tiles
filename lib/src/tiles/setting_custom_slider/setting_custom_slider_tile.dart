@@ -36,6 +36,8 @@ class SettingCustomSliderTile extends SettingTile {
   final String Function(double value)? label;
 
   /// The list of discrete values allowed in the slider.
+  ///
+  /// It needs at least two values.
   final List<double> values;
 
   /// The initial value that the slider is set to.

@@ -38,6 +38,11 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
   void initState() {
     super.initState();
 
+    assert(
+      widget.values.length >= 2,
+      'The discrete slider needs at least two values: ${widget.values}.',
+    );
+
     final valueIndex = widget.values.indexOf(widget.initialValue);
 
     assert(
@@ -89,7 +94,9 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
               ? widget.label!(_value)
               : _value.toStringAsFixed(2),
           max: widget.values.length - 1,
-          divisions: widget.values.length - 1,
+          // A slider refuses 0 divisions: with a single value, use none
+          divisions:
+              widget.values.length > 1 ? widget.values.length - 1 : null,
           onChanged: _onChanged,
         ),
       ),
