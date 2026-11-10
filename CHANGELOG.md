@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Fixed
+
+- The `SettingCustomSliderTile` dialog no longer crashes when the `initialValue` is not in the `values`, it selects the closest value instead
+- The `onChanged` callback of the `SettingCustomSliderTile` receives the value instead of the index of the slider
+- The `SettingColorTile` only calls `onSubmitted` when the dialog is validated, and calls `onCanceled` when it is canceled
+- The controller of the `SettingTextFieldTile` dialog is disposed
+
 ## 6.0.1
 
 ### Added
