@@ -36,4 +36,6 @@ Running `flutter pub get` with a newer Flutter rewrites `example/pubspec.lock`: 
 
 ## Git
 
+Every issue and pull request has a label for its kind: `bug`, `enhancement` or `documentation`. A pull request gets the label of its issue.
+
 Commits on `main`, and a `vX.Y.Z` commit for each version. Keep `CHANGELOG.md` in the Keep a Changelog format, with a `### BREAKING CHANGES` section for a major version.
