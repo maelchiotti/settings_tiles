@@ -69,12 +69,13 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
     return closestIndex;
   }
 
-  void _onChanged(double value) {
+  void _onChanged(double position) {
     setState(() {
-      _index = value.toInt();
+      _index = position.toInt();
     });
 
-    widget.onChanged?.call(value);
+    // The slider gives its position, not the value
+    widget.onChanged?.call(_value);
   }
 
   @override
