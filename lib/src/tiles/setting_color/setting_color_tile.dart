@@ -25,6 +25,7 @@ class SettingColorTile extends SettingTile {
     this.colorPickers = const [ColorPickerType.primary, ColorPickerType.accent],
     this.enableOpacity = true,
     this.initialColor = Colors.white,
+    this.onSelectionChanged,
     this.onCanceled,
   }) : super(
           trailing: ColorPreview(color: initialColor),
@@ -46,8 +47,16 @@ class SettingColorTile extends SettingTile {
   /// be previewed at the end of the tile.
   final Color initialColor;
 
-  /// Called when the color is picked.
+  /// Called when the color is picked and the dialog is validated with the OK
+  /// button.
   final void Function(Color) onSubmitted;
+
+  /// Called each time a color is selected in the dialog, before it is
+  /// validated.
+  ///
+  /// Use it to preview the color. The color is only saved by [onSubmitted], and
+  /// [onCanceled] is called if the dialog is canceled.
+  final void Function(Color)? onSelectionChanged;
 
   /// Called when the dialog is canceled.
   final VoidCallback? onCanceled;
@@ -71,7 +80,10 @@ class SettingColorTile extends SettingTile {
       pickersEnabled: colorPickersMap,
       enableOpacity: enableOpacity,
       color: initialColor,
-      onColorChanged: (color) => pickedColor = color,
+      onColorChanged: (color) {
+        pickedColor = color;
+        onSelectionChanged?.call(color);
+      },
     ).showPickerDialog(context);
 
     // Only submit the color when the dialog is validated

@@ -7,11 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### BREAKING CHANGES
+
+- The `onSubmitted` callback of the `SettingColorTile` is now called when the dialog is validated with the OK button, instead of each time a color is clicked (use the new `onSelectionChanged` callback for that)
+
+### Added
+
+- Added the `onSelectionChanged` parameter to the `SettingColorTile`, called each time a color is selected in the dialog
+
 ### Fixed
 
 - The `SettingCustomSliderTile` dialog no longer crashes when the `initialValue` is not in the `values`, it selects the closest value instead
 - The `onChanged` callback of the `SettingCustomSliderTile` receives the value instead of the index of the slider
-- The `SettingColorTile` only calls `onSubmitted` when the dialog is validated, and calls `onCanceled` when it is canceled
+- The `SettingColorTile` calls `onCanceled` when the dialog is canceled
 - The controller of the `SettingTextFieldTile` dialog is disposed
 - The `SettingCustomSliderTile` dialog no longer crashes when `values` has a single value, and asserts that it has at least two
 
