@@ -2,7 +2,7 @@
 
 Flutter package published on pub.dev: a collection of setting tiles (switch, checkbox, single and multiple options, slider, custom slider, text field, color, action, about) and sections to build a settings screen. BSD-3-Clause.
 
-Its main user is Material Notes (`maelchiotti/LocalMaterialNotes`), whose settings pages are built with it: check that a change keeps working there, and treat any change of a public signature or of the default appearance as breaking.
+Apps build their settings pages with it: check that a change keeps working in an app, and treat any change of a public signature or of the default appearance as breaking.
 
 ## Commands
 

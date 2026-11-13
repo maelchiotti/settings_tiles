@@ -12,4 +12,4 @@ description: Prepare a new version of the settings_tiles package for pub.dev (ve
 5. Run the `check` skill.
 6. `dart pub publish --dry-run`: it must end without warnings.
 
-Never run `dart pub publish`: the maintainer publishes. Then Material Notes (`maelchiotti/LocalMaterialNotes`) can bump its dependency.
+Never run `dart pub publish`: the maintainer publishes.
