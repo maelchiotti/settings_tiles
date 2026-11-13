@@ -27,7 +27,7 @@ Running `flutter pub get` with a newer Flutter rewrites `example/pubspec.lock`: 
 
 ## Code style
 
-- `very_good_analysis` and `flutter_lints`, with `strict-inference`.
+- `flutter_lints` with `strict-inference`, `public_member_api_docs`, `always_use_package_imports`, `always_put_control_body_on_new_line`, `curly_braces_in_flow_control_structures` and `unawaited_futures`, as in Material Notes.
 - Package imports (`package:settings_tiles/...`), not relative ones.
 - Every public member has a `///` doc comment. Constructor parameters: required ones first, then `super.key` and the inherited ones.
 - Control bodies on their own line.
