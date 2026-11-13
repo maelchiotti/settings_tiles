@@ -8,7 +8,7 @@ fi
 
 cd "${CLAUDE_PROJECT_DIR:-.}"
 
-# Flutter SDK, at the version used by Material Notes (its .fvmrc)
+# Flutter SDK
 version=3.44.0
 sdk="$HOME/flutter-$version"
 if [ ! -x "$sdk/bin/flutter" ]; then
