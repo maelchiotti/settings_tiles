@@ -7,14 +7,14 @@ Its main user is Material Notes (`maelchiotti/LocalMaterialNotes`), whose settin
 ## Commands
 
 - Install: `flutter pub get` (and in `example`).
-- Format: `dart format <files>` (`page_width: 120` in `analysis_options.yaml`).
+- Format: `dart format .` (default width, 80).
 - Analyze: `dart analyze --fatal-infos`. Two infos remain on `main`: `groupValue` and `onChanged` of `Radio` in `setting_single_option_dialog.dart` are deprecated since Flutter 3.32 (replace them with a `RadioGroup` when asked).
 - Example: `cd example && flutter run`.
 - Publish: `dart pub publish --dry-run` only; the maintainer publishes (`make publish`).
 
 There are no tests. The `check` skill runs every check, the `release` skill prepares a version, the `new-tile` skill adds a tile.
 
-Running `flutter pub get` with a newer Flutter rewrites `example/pubspec.lock`: only commit it when the dependencies are meant to change. The code on `main` was not formatted with the latest formatter: format only the files you change.
+Running `flutter pub get` with a newer Flutter rewrites `example/pubspec.lock`: only commit it when the dependencies are meant to change.
 
 ## Structure
 

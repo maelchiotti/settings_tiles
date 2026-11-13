@@ -52,9 +52,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
     );
 
     // In release mode, fall back to the closest allowed value
-    _index = valueIndex != -1
-        ? valueIndex
-        : _closestIndex(widget.initialValue);
+    _index = valueIndex != -1 ? valueIndex : _closestIndex(widget.initialValue);
   }
 
   /// Returns the index of the value of [SettingCustomSliderDialog.values]
@@ -95,8 +93,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
               : _value.toStringAsFixed(2),
           max: widget.values.length - 1,
           // A slider refuses 0 divisions: with a single value, use none
-          divisions:
-              widget.values.length > 1 ? widget.values.length - 1 : null,
+          divisions: widget.values.length > 1 ? widget.values.length - 1 : null,
           onChanged: _onChanged,
         ),
       ),
