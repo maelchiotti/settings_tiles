@@ -283,6 +283,8 @@ SettingColorTile(
 )
 ```
 
+`onSubmitted` is called with the picked color when the dialog is validated with the OK button, and `onCanceled` when it is canceled. To react to each color selected in the dialog before it is validated (to preview it, for example), set the `onSelectionChanged` parameter.
+
 To change the available color pickers, set the `colorPickers` parameter. To enable all the color pickers, set it to `ColorPickerType.values`.
 
 #### About
