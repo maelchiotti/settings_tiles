@@ -8,8 +8,8 @@ fi
 
 cd "${CLAUDE_PROJECT_DIR:-.}"
 
-# Flutter SDK
-version=3.44.0
+# Flutter SDK, at the version pinned in .fvmrc
+version=$(sed -n 's/.*"flutter": *"\([^"]*\)".*/\1/p' .fvmrc)
 sdk="$HOME/flutter-$version"
 if [ ! -x "$sdk/bin/flutter" ]; then
   rm -rf "$sdk.tmp"
@@ -33,5 +33,5 @@ if ! sha256sum --check --status "$hashes" 2>/dev/null; then
   rm -f "$hashes"
   flutter pub get >/dev/null
   (cd example && flutter pub get >/dev/null)
-  sha256sum .claude/hooks/session-start.sh pubspec.yaml example/pubspec.yaml > "$hashes"
+  sha256sum .claude/hooks/session-start.sh .fvmrc pubspec.yaml example/pubspec.yaml > "$hashes"
 fi
