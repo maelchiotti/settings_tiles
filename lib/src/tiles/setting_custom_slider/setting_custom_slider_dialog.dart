@@ -38,6 +38,11 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
   void initState() {
     super.initState();
 
+    assert(
+      widget.values.length >= 2,
+      'The discrete slider needs at least two values: ${widget.values}.',
+    );
+
     final valueIndex = widget.values.indexOf(widget.initialValue);
 
     assert(
@@ -46,15 +51,34 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       '${widget.initialValue} is not in ${widget.values}.',
     );
 
-    _index = valueIndex;
+    // In release mode, fall back to the closest allowed value
+    _index = valueIndex != -1 ? valueIndex : _closestIndex(widget.initialValue);
   }
 
-  void _onChanged(double value) {
+  /// Returns the index of the value of [SettingCustomSliderDialog.values]
+  /// that is the closest to [value].
+  int _closestIndex(double value) {
+    var closestIndex = 0;
+
+    for (var index = 1; index < widget.values.length; index++) {
+      final distance = (widget.values[index] - value).abs();
+      final closestDistance = (widget.values[closestIndex] - value).abs();
+
+      if (distance < closestDistance) {
+        closestIndex = index;
+      }
+    }
+
+    return closestIndex;
+  }
+
+  void _onChanged(double position) {
     setState(() {
-      _index = value.toInt();
+      _index = position.toInt();
     });
 
-    widget.onChanged?.call(value);
+    // The slider gives its position, not the value
+    widget.onChanged?.call(_value);
   }
 
   @override
@@ -68,7 +92,8 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
               ? widget.label!(_value)
               : _value.toStringAsFixed(2),
           max: widget.values.length - 1,
-          divisions: widget.values.length - 1,
+          // A slider refuses 0 divisions: with a single value, use none
+          divisions: widget.values.length > 1 ? widget.values.length - 1 : null,
           onChanged: _onChanged,
         ),
       ),

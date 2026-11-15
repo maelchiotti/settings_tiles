@@ -30,6 +30,13 @@ class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
   }
 
   @override
+  void dispose() {
+    _textEditingController.dispose();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
       title: Text(widget.title),
