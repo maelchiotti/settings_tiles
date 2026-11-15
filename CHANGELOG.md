@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 7.0.0
+## 7.0.0 - 2026-11-15
 
 ### BREAKING CHANGES
 
@@ -22,13 +22,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - The controller of the `SettingTextFieldTile` dialog is disposed
 - The `SettingCustomSliderTile` dialog no longer crashes when `values` has a single value, and asserts that it has at least two
 
-## 6.0.1
+## 6.0.1 - 2025-06-12
 
 ### Added
 
 - Export the base `SettingsTile` class
 
-## 6.0.0
+## 6.0.0 - 2025-05-08
 
 ### BREAKING CHANGES
 
@@ -43,24 +43,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Removed the padding above a `SettingSection`
 
-## 5.0.0
+## 5.0.0 - 2025-04-28
 
 ### BREAKING CHANGES
 
 - The `divider` parameter of the `SettingSection` is `null` by default
 - Removed the `TextStyle` and `Color` extensions from the package exports
 
-## 4.1.0
+## 4.1.0 - 2025-02-25
+
+### Added
 
 - Add `SettingCustomSliderTile` that displays a slider with a set of custom values
 
-## 4.0.0
+## 4.0.0 - 2025-01-11
 
 ### BREAKING CHANGES
 
 - Update `SettingSingleOptionTile.detailed` so that the `options` parameter is a list of `MultipleOptionsDetails` record
 
-## 3.0.0
+## 3.0.0 - 2025-01-11
 
 ### BREAKING CHANGES
 
@@ -70,29 +72,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Minimum number of selected options for `SettingMultipleOptionsTile`
 
-## 2.0.4
+## 2.0.4 - 2024-12-15
+
+### Changed
 
 - Update example
 
-## 2.0.3
+## 2.0.3 - 2024-10-19
 
 ### Changed
 
 - Do not use the root navigator to show the dialogs
 
-## 2.0.2
+## 2.0.2 - 2024-10-19
 
 ### Changed
 
 - Reduce section padding
 
-## 2.0.1
+## 2.0.1 - 2024-10-19
 
 ### Changed
 
 - Reduce section padding
 
-## 2.0.0
+## 2.0.0 - 2024-10-19
 
 ### BREAKING CHANGES
 
@@ -110,6 +114,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Reduce the title size
 - Improve the icon spacing
 
-## 1.0.0
+## 1.0.0 - 2024-10-13
 
 Initial release.
