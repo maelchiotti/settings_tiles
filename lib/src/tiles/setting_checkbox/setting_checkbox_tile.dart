@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
 /// Checkbox setting tile.
@@ -15,11 +15,11 @@ class SettingCheckboxTile extends SettingTile {
     super.value,
     super.description,
   }) : super(
-          trailing: Checkbox(
-            value: checked,
-            onChanged: enabled ? onChanged : null,
-          ),
-        );
+         trailing: Checkbox(
+           value: checked,
+           onChanged: enabled ? onChanged : null,
+         ),
+       );
 
   /// Whether the checkbox is checked.
   final bool checked;

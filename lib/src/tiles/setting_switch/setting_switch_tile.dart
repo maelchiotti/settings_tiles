@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
 /// Switch setting tile.
@@ -15,11 +15,11 @@ class SettingSwitchTile extends SettingTile {
     super.value,
     super.description,
   }) : super(
-          trailing: Switch(
-            value: toggled,
-            onChanged: enabled ? onChanged : null,
-          ),
-        );
+         trailing: Switch(
+           value: toggled,
+           onChanged: enabled ? onChanged : null,
+         ),
+       );
 
   /// Whether the switch it toggled.
   final bool toggled;

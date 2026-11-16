@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A color preview.
 class ColorPreview extends StatelessWidget {
   /// A circle filled with the [color] to preview it.
-  const ColorPreview({
-    required this.color,
-    super.key,
-  });
+  const ColorPreview({required this.color, super.key});
 
   /// The color to preview.
   final Color color;
@@ -16,10 +13,7 @@ class ColorPreview extends StatelessWidget {
     return Container(
       width: 32,
       height: 32,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
     );
   }
 }

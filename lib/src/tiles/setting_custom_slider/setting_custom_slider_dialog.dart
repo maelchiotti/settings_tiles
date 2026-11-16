@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs private class
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/widgets/cancel_button.dart';
 import 'package:settings_tiles/src/tiles/widgets/ok_button.dart';
 
@@ -99,9 +99,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       ),
       actions: [
         const CancelButton(),
-        OkButton(
-          onPressed: () => Navigator.pop(context, _value),
-        ),
+        OkButton(onPressed: () => Navigator.pop(context, _value)),
       ],
     );
   }

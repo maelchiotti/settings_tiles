@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/widgets/setting_tile_icon.dart';
 import 'package:settings_tiles/src/tiles/widgets/setting_tile_value.dart';
 
@@ -60,10 +60,7 @@ abstract class SettingTile extends StatelessWidget {
       subtitle: description != null || value != null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (value != null) value!,
-                if (description != null) description!,
-              ],
+              children: [?value, ?description],
             )
           : null,
       trailing: trailing,

@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs private class
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class CancelButton extends StatelessWidget {
   const CancelButton({super.key});
@@ -10,8 +10,10 @@ class CancelButton extends StatelessWidget {
     return TextButton(
       onPressed: () => Navigator.pop(context),
       child: Text(
-        Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)
-                ?.cancelButtonLabel ??
+        Localizations.of<MaterialLocalizations>(
+              context,
+              MaterialLocalizations,
+            )?.cancelButtonLabel ??
             'Cancel',
       ),
     );

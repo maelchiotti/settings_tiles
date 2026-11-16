@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/tiles/widgets/setting_tile_icon.dart';
 
@@ -14,11 +14,12 @@ class SettingAboutTile extends SettingTile {
     this.applicationLegalese,
     this.dialogChildren,
   }) : super(
-          title: applicationName != null ? Text(applicationName) : null,
-          description:
-              applicationVersion != null ? Text(applicationVersion) : null,
-          icon: const SettingTileIcon(Icons.info),
-        );
+         title: applicationName != null ? Text(applicationName) : null,
+         description: applicationVersion != null
+             ? Text(applicationVersion)
+             : null,
+         icon: const SettingTileIcon(Icons.info),
+       );
 
   /// The name of the application.
   final String? applicationName;

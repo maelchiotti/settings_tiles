@@ -1,5 +1,5 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_color/color_preview.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 
@@ -27,9 +27,7 @@ class SettingColorTile extends SettingTile {
     this.initialColor = Colors.white,
     this.onSelectionChanged,
     this.onCanceled,
-  }) : super(
-          trailing: ColorPreview(color: initialColor),
-        );
+  }) : super(trailing: ColorPreview(color: initialColor));
 
   /// The title of the dialog.
   final String dialogTitle;

@@ -10,7 +10,7 @@ The Flutter version is pinned in `.fvmrc`. Locally, run Flutter and Dart through
 
 - Install: `flutter pub get` (and in `example`).
 - Format: `dart format .` (default width, 80).
-- Analyze: `dart analyze --fatal-infos`. Two infos remain on `main`: `groupValue` and `onChanged` of `Radio` in `setting_single_option_dialog.dart` are deprecated since Flutter 3.32 (replace them with a `RadioGroup` when asked).
+- Analyze: `dart analyze --fatal-infos`.
 - Example: `cd example && flutter run`.
 - Publish: `dart pub publish --dry-run` only; the maintainer publishes (`dart pub publish`).
 
@@ -31,6 +31,7 @@ Running `flutter pub get` with a newer Flutter rewrites `example/pubspec.lock`: 
 
 - `flutter_lints` with `strict-inference`, `public_member_api_docs`, `always_use_package_imports`, `always_put_control_body_on_new_line`, `curly_braces_in_flow_control_structures` and `unawaited_futures`.
 - Package imports (`package:settings_tiles/...`), not relative ones.
+- Widgets come from `package:material_ui/material_ui.dart` (the standalone Material library), never from `package:flutter/material.dart`: the two have separate `Theme` and `MaterialLocalizations` types, so mixing them breaks the dialogs.
 - Every public member has a `///` doc comment. Constructor parameters: required ones first, then `super.key` and the inherited ones.
 - Control bodies on their own line.
 - The tiles take `Widget`s for `icon`, `title`, `value` and `description`, never `String`s, so that the app styles them.
