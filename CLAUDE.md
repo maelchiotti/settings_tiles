@@ -10,7 +10,7 @@ The Flutter version is pinned in `.fvmrc`. Locally, run Flutter and Dart through
 
 - Install: `flutter pub get` (and in `example`).
 - Format: `dart format .` (default width, 80).
-- Analyze: `dart analyze --fatal-infos`. Two infos remain on `main`: `groupValue` and `onChanged` of `Radio` in `setting_single_option_dialog.dart` are deprecated since Flutter 3.32 (replace them with a `RadioGroup` when asked).
+- Analyze: `dart analyze --fatal-infos`.
 - Example: `cd example && flutter run`.
 - Publish: `dart pub publish --dry-run` only; the maintainer publishes (`dart pub publish`).
 
