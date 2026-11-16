@@ -8,6 +8,8 @@ A collection of settings tiles to easily create a settings screen.
 
 See the [installing instructions](https://pub.dev/packages/settings_tiles/install).
 
+Since version 8.0.0, the tiles are built with the standalone [material_ui](https://pub.dev/packages/material_ui) package instead of `package:flutter/material.dart`. Your app must use `material_ui` too (Flutter 3.47 or higher), see its [migration guide](https://pub.dev/packages/material_ui#migrating-existing-code-to-this-package). Use version 7 in an app that still uses `package:flutter/material.dart`.
+
 ## Usage
 
 ### Section

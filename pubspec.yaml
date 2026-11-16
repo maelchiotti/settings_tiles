@@ -7,16 +7,15 @@ issue_tracker: https://github.com/maelchiotti/settings_tiles/issues
 version: 7.0.1
 
 environment:
-  sdk: ^3.9.0
-  flutter: ">=3.35.0"
+  sdk: ^3.13.0
+  flutter: ">=3.47.0"
 
 dependencies:
-  flex_color_picker: ^3.7.1
+  flex_color_picker: ^4.0.0
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   gap: ^3.0.1
+  material_ui: ^1.11.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0

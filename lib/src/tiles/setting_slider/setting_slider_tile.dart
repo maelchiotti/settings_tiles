@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_slider/setting_slider_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 

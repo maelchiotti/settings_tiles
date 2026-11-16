@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs private class
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class OkButton extends StatelessWidget {
   const OkButton({required this.onPressed, super.key});

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/setting_multiple_options/setting_multiple_options_dialog.dart';
 import 'package:settings_tiles/src/tiles/setting_tile.dart';
 import 'package:settings_tiles/src/types/multiple_options_details.dart';

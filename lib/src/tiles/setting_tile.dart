@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:settings_tiles/src/tiles/widgets/setting_tile_icon.dart';
 import 'package:settings_tiles/src/tiles/widgets/setting_tile_value.dart';
 
