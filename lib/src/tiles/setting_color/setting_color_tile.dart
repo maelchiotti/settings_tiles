@@ -27,9 +27,7 @@ class SettingColorTile extends SettingTile {
     this.initialColor = Colors.white,
     this.onSelectionChanged,
     this.onCanceled,
-  }) : super(
-          trailing: ColorPreview(color: initialColor),
-        );
+  }) : super(trailing: ColorPreview(color: initialColor));
 
   /// The title of the dialog.
   final String dialogTitle;

@@ -14,11 +14,12 @@ class SettingAboutTile extends SettingTile {
     this.applicationLegalese,
     this.dialogChildren,
   }) : super(
-          title: applicationName != null ? Text(applicationName) : null,
-          description:
-              applicationVersion != null ? Text(applicationVersion) : null,
-          icon: const SettingTileIcon(Icons.info),
-        );
+         title: applicationName != null ? Text(applicationName) : null,
+         description: applicationVersion != null
+             ? Text(applicationVersion)
+             : null,
+         icon: const SettingTileIcon(Icons.info),
+       );
 
   /// The name of the application.
   final String? applicationName;

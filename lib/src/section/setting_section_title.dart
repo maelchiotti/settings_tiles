@@ -15,10 +15,7 @@ class SettingSectionTitle extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-      child: Text(
-        title,
-        style: theme.textTheme.titleMedium,
-      ),
+      child: Text(title, style: theme.textTheme.titleMedium),
     );
   }
 }

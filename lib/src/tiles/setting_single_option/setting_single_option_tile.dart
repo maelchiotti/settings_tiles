@@ -25,11 +25,11 @@ class SettingSingleOptionTile<T extends Object> extends SettingTile {
     this.initialOption,
     this.onCanceled,
   }) : options = options
-            .map(
-              (option) =>
-                  (value: option, title: option.toString(), subtitle: null),
-            )
-            .toList();
+           .map(
+             (option) =>
+                 (value: option, title: option.toString(), subtitle: null),
+           )
+           .toList();
 
   /// A setting tile with a single option that can be selected.
   ///

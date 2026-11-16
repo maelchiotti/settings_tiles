@@ -3,10 +3,7 @@
 import 'package:flutter/material.dart';
 
 class OkButton extends StatelessWidget {
-  const OkButton({
-    required this.onPressed,
-    super.key,
-  });
+  const OkButton({required this.onPressed, super.key});
 
   final VoidCallback? onPressed;
 
@@ -15,8 +12,10 @@ class OkButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       child: Text(
-        Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)
-                ?.okButtonLabel ??
+        Localizations.of<MaterialLocalizations>(
+              context,
+              MaterialLocalizations,
+            )?.okButtonLabel ??
             'OK',
       ),
     );

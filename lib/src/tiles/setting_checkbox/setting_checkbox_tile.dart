@@ -15,11 +15,11 @@ class SettingCheckboxTile extends SettingTile {
     super.value,
     super.description,
   }) : super(
-          trailing: Checkbox(
-            value: checked,
-            onChanged: enabled ? onChanged : null,
-          ),
-        );
+         trailing: Checkbox(
+           value: checked,
+           onChanged: enabled ? onChanged : null,
+         ),
+       );
 
   /// Whether the checkbox is checked.
   final bool checked;

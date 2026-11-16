@@ -26,11 +26,11 @@ class SettingMultipleOptionsTile<T extends Object> extends SettingTile {
     this.minOptions = 0,
     this.onCanceled,
   }) : options = options
-            .map(
-              (option) =>
-                  (value: option, title: option.toString(), subtitle: null),
-            )
-            .toList();
+           .map(
+             (option) =>
+                 (value: option, title: option.toString(), subtitle: null),
+           )
+           .toList();
 
   /// A setting tile with multiple options that can be checked.
   ///

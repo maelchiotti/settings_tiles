@@ -99,9 +99,7 @@ class _SettingCustomSliderDialogState extends State<SettingCustomSliderDialog> {
       ),
       actions: [
         const CancelButton(),
-        OkButton(
-          onPressed: () => Navigator.pop(context, _value),
-        ),
+        OkButton(onPressed: () => Navigator.pop(context, _value)),
       ],
     );
   }

@@ -66,9 +66,7 @@ class _SettingSliderDialogState extends State<SettingSliderDialog> {
       ),
       actions: [
         const CancelButton(),
-        OkButton(
-          onPressed: () => Navigator.pop(context, _value),
-        ),
+        OkButton(onPressed: () => Navigator.pop(context, _value)),
       ],
     );
   }

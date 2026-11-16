@@ -43,10 +43,7 @@ class _SettingTextFieldDialogState extends State<SettingTextFieldDialog> {
       content: Padding(
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
-          child: TextField(
-            controller: _textEditingController,
-            autofocus: true,
-          ),
+          child: TextField(controller: _textEditingController, autofocus: true),
         ),
       ),
       actions: [

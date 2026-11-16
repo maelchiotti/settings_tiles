@@ -10,8 +10,10 @@ class CancelButton extends StatelessWidget {
     return TextButton(
       onPressed: () => Navigator.pop(context),
       child: Text(
-        Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)
-                ?.cancelButtonLabel ??
+        Localizations.of<MaterialLocalizations>(
+              context,
+              MaterialLocalizations,
+            )?.cancelButtonLabel ??
             'Cancel',
       ),
     );

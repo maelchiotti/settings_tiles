@@ -78,8 +78,9 @@ class _SettingMultipleOptionsDialogState<T extends Object>
       actions: [
         const CancelButton(),
         OkButton(
-          onPressed:
-              canSubmit ? () => Navigator.pop(context, _selectedOptions) : null,
+          onPressed: canSubmit
+              ? () => Navigator.pop(context, _selectedOptions)
+              : null,
         ),
       ],
     );

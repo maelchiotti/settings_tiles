@@ -27,7 +27,7 @@ class SettingSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (title != null) title!,
+        ?title,
         for (final (index, tile) in tiles.indexed) ...[
           if (divider != null && index != 0) divider!,
           tile,

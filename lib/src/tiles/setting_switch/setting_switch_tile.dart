@@ -15,11 +15,11 @@ class SettingSwitchTile extends SettingTile {
     super.value,
     super.description,
   }) : super(
-          trailing: Switch(
-            value: toggled,
-            onChanged: enabled ? onChanged : null,
-          ),
-        );
+         trailing: Switch(
+           value: toggled,
+           onChanged: enabled ? onChanged : null,
+         ),
+       );
 
   /// Whether the switch it toggled.
   final bool toggled;

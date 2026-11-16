@@ -60,10 +60,7 @@ abstract class SettingTile extends StatelessWidget {
       subtitle: description != null || value != null
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (value != null) value!,
-                if (description != null) description!,
-              ],
+              children: [?value, ?description],
             )
           : null,
       trailing: trailing,
